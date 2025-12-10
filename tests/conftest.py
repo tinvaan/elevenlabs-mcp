@@ -3,7 +3,24 @@ import pytest
 import tempfile
 
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, MagicMock, Mock
+
+
+def create_mock(**attrs):
+    """Helper to create a Mock with attributes set.
+
+    This is useful for creating mocks in @patch decorators where you need
+    to set attributes on the mock object. Regular Mock(**kwargs) doesn't
+    set attributes - it uses kwargs for configuration.
+
+    Example:
+        @patch("module.function", return_value=[
+            create_mock(name="Test", value=123)
+        ])
+    """
+    mock = Mock()
+    mock.configure_mock(**attrs)
+    return mock
 
 
 @pytest.fixture

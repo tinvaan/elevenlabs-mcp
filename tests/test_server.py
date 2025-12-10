@@ -8,6 +8,7 @@ import pytest
 
 from unittest.mock import Mock, patch
 
+from conftest import create_mock
 from elevenlabs_mcp.server import (
     format_diarized_transcript,
     search_voices,
@@ -87,229 +88,240 @@ class TestFormatDiarizedTranscript:
 class TestSearchVoices:
     """Tests for the search_voices function."""
 
-    def test_search_voices_returns_list(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.voices.search",
+        return_value=create_mock(
+            voices=[
+                create_mock(
+                    voice_id="voice123",
+                    name="Test Voice",
+                    category="generated",
+                )
+            ]
+        ),
+    )
+    def test_search_voices_returns_list(self, mock_search, mock_client):
         """Test that search_voices returns a list of McpVoice objects."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
+        result = search_voices(search="test")
 
+        assert len(result) == 1
+        assert result[0].id == "voice123"
+        assert result[0].name == "Test Voice"
+        assert result[0].category == "generated"
 
-            mock_voice = Mock()
-            mock_voice.voice_id = "voice123"
-            mock_voice.name = "Test Voice"
-            mock_voice.category = "generated"
-
-            patched_client.voices.search.return_value = Mock(voices=[mock_voice])
-
-            result = search_voices(search="test")
-
-            assert len(result) == 1
-            assert result[0].id == "voice123"
-            assert result[0].name == "Test Voice"
-            assert result[0].category == "generated"
-
-    def test_search_voices_empty(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.voices.search",
+        return_value=create_mock(voices=[]),
+    )
+    def test_search_voices_empty(self, mock_search, mock_client):
         """Test search_voices with no results."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            patched_client.voices.search.return_value = Mock(voices=[])
+        result = search_voices(search="nonexistent")
 
-            result = search_voices(search="nonexistent")
-
-            assert len(result) == 0
+        assert len(result) == 0
 
 
 class TestListModels:
     """Tests for the list_models function."""
 
-    def test_list_models(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.models.list",
+        return_value=[
+            create_mock(
+                model_id="model123",
+                name="Test Model",
+                languages=[create_mock(language_id="en", name="English")],
+            )
+        ],
+    )
+    def test_list_models(self, mock_list):
         """Test that list_models returns model information."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
+        result = list_models()
 
-            mock_lang = Mock()
-            mock_lang.language_id = "en"
-            mock_lang.name = "English"
-
-            mock_model = Mock()
-            mock_model.model_id = "model123"
-            mock_model.name = "Test Model"
-            mock_model.languages = [mock_lang]
-
-            patched_client.models.list.return_value = [mock_model]
-
-            result = list_models()
-
-            assert len(result) == 1
-            assert result[0].id == "model123"
-            assert result[0].name == "Test Model"
-            assert len(result[0].languages) == 1
-            assert result[0].languages[0].language_id == "en"
+        assert len(result) == 1
+        assert result[0].id == "model123"
+        assert result[0].name == "Test Model"
+        assert len(result[0].languages) == 1
+        assert result[0].languages[0].language_id == "en"
 
 
 class TestGetVoice:
     """Tests for the get_voice function."""
 
-    def test_get_voice(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.voices.get",
+        return_value=create_mock(
+            voice_id="voice123",
+            name="Test Voice",
+            category="professional",
+            fine_tuning=create_mock(state={"status": "ready"}),
+        ),
+    )
+    def test_get_voice(self, mock_get, mock_client):
         """Test getting a specific voice."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            mock_response = Mock()
-            mock_response.voice_id = "voice123"
-            mock_response.name = "Test Voice"
-            mock_response.category = "professional"
-            mock_response.fine_tuning = Mock(state={"status": "ready"})
+        result = get_voice("voice123")
 
-            patched_client.voices.get.return_value = mock_response
-
-            result = get_voice("voice123")
-
-            assert result.id == "voice123"
-            assert result.name == "Test Voice"
-            patched_client.voices.get.assert_called_once_with(voice_id="voice123")
+        assert result.id == "voice123"
+        assert result.name == "Test Voice"
+        mock_get.assert_called_once_with(voice_id="voice123")
 
 
 class TestListPhoneNumbers:
     """Tests for the list_phone_numbers function."""
 
-    def test_list_phone_numbers_empty(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.conversational_ai.phone_numbers.list",
+        return_value=[],
+    )
+    def test_list_phone_numbers_empty(self, mock_list, mock_client):
         """Test list_phone_numbers with no phone numbers."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            patched_client.conversational_ai.phone_numbers.list.return_value = []
+        result = list_phone_numbers()
 
-            result = list_phone_numbers()
+        assert result.type == "text"
+        assert "No phone numbers found" in result.text
 
-            assert result.type == "text"
-            assert "No phone numbers found" in result.text
-
-    def test_list_phone_numbers_with_data(self, mock_client):
-        """Test list_phone_numbers with phone numbers."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            mock_phone = Mock()
-            mock_phone.phone_number = "+1234567890"
-            mock_phone.phone_number_id = "phone123"
-            mock_phone.provider = "twilio"
-            mock_phone.label = "Main"
-            mock_phone.assigned_agent = Mock(
-                agent_name="Test Agent",
-                agent_id="agent123"
+    @patch(
+        "elevenlabs_mcp.server.client.conversational_ai.phone_numbers.list",
+        return_value=[
+            create_mock(
+                phone_number="+1234567890",
+                phone_number_id="phone123",
+                provider="twilio",
+                label="Main",
+                assigned_agent=create_mock(
+                    agent_name="Test Agent",
+                    agent_id="agent123",
+                ),
             )
+        ],
+    )
+    def test_list_phone_numbers_with_data(self, mock_list, mock_client):
+        """Test list_phone_numbers with phone numbers."""
+        result = list_phone_numbers()
 
-            patched_client.conversational_ai.phone_numbers.list.return_value = [mock_phone]
-
-            result = list_phone_numbers()
-
-            assert result.type == "text"
-            assert "+1234567890" in result.text
-            assert "phone123" in result.text
-            assert "twilio" in result.text
+        assert result.type == "text"
+        assert "+1234567890" in result.text
+        assert "phone123" in result.text
+        assert "twilio" in result.text
 
 
 class TestGetConversation:
     """Tests for the get_conversation function."""
 
-    def test_get_conversation(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.conversational_ai.conversations.get",
+        return_value=create_mock(
+            conversation_id="conv123",
+            status="completed",
+            agent_id="agent123",
+            transcript=[
+                create_mock(role="agent", message="Hello", tool_calls=None, feedback=None)
+            ],
+            metadata=None,
+            analysis=None,
+        ),
+    )
+    def test_get_conversation(self, mock_get, mock_client):
         """Test getting a conversation."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            mock_response = Mock()
-            mock_response.conversation_id = "conv123"
-            mock_response.status = "completed"
-            mock_response.agent_id = "agent123"
-            mock_response.transcript = [
-                Mock(role="agent", message="Hello", tool_calls=None, feedback=None)
-            ]
-            mock_response.metadata = None
-            mock_response.analysis = None
+        result = get_conversation("conv123")
 
-            patched_client.conversational_ai.conversations.get.return_value = mock_response
+        assert result.type == "text"
+        assert "conv123" in result.text
+        assert "completed" in result.text
 
-            result = get_conversation("conv123")
-
-            assert result.type == "text"
-            assert "conv123" in result.text
-            assert "completed" in result.text
-
-    def test_get_conversation_with_metadata(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.conversational_ai.conversations.get",
+        return_value=create_mock(
+            conversation_id="conv123",
+            status="completed",
+            agent_id="agent123",
+            transcript=[],
+            metadata=create_mock(call_duration_secs=120),
+            analysis=None,
+        ),
+    )
+    def test_get_conversation_with_metadata(self, mock_get, mock_client):
         """Test getting a conversation with metadata."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            mock_metadata = Mock()
-            mock_metadata.call_duration_secs = 120
+        result = get_conversation("conv123")
 
-            mock_response = Mock()
-            mock_response.conversation_id = "conv123"
-            mock_response.status = "completed"
-            mock_response.agent_id = "agent123"
-            mock_response.transcript = []
-            mock_response.metadata = mock_metadata
-            mock_response.analysis = None
-
-            patched_client.conversational_ai.conversations.get.return_value = mock_response
-
-            result = get_conversation("conv123")
-
-            assert "120 seconds" in result.text
+        assert "120 seconds" in result.text
 
 
 class TestListConversations:
     """Tests for the list_conversations function."""
 
-    def test_list_conversations_empty(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.conversational_ai.conversations.list",
+        return_value=create_mock(conversations=[]),
+    )
+    def test_list_conversations_empty(self, mock_list, mock_client):
         """Test list_conversations with no conversations."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            patched_client.conversational_ai.conversations.list.return_value = Mock(conversations=[])
-            result = list_conversations()
+        result = list_conversations()
 
-            assert result.type == "text"
-            assert "No conversations found" in result.text
+        assert result.type == "text"
+        assert "No conversations found" in result.text
 
-    def test_list_conversations_with_data(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.conversational_ai.conversations.list",
+        return_value=create_mock(
+            conversations=[
+                create_mock(
+                    conversation_id="conv123",
+                    status="completed",
+                    agent_name="Test Agent",
+                    agent_id="agent123",
+                    start_time_unix_secs=1700000000,
+                    call_duration_secs=60,
+                    message_count=5,
+                    call_successful=True,
+                )
+            ],
+            has_more=False,
+            next_cursor=None,
+        ),
+    )
+    def test_list_conversations_with_data(self, mock_list, mock_client):
         """Test list_conversations with data."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            mock_conv = Mock()
-            mock_conv.conversation_id = "conv123"
-            mock_conv.status = "completed"
-            mock_conv.agent_name = "Test Agent"
-            mock_conv.agent_id = "agent123"
-            mock_conv.start_time_unix_secs = 1700000000
-            mock_conv.call_duration_secs = 60
-            mock_conv.message_count = 5
-            mock_conv.call_successful = True
+        result = list_conversations()
 
-            patched_client.conversational_ai.conversations.list.return_value = Mock(
-                conversations=[mock_conv],
-                has_more=False,
-                next_cursor=None
-            )
-
-            result = list_conversations()
-
-            assert result.type == "text"
-            assert "conv123" in result.text
-            assert "completed" in result.text
+        assert result.type == "text"
+        assert "conv123" in result.text
+        assert "completed" in result.text
 
 
 class TestSearchVoiceLibrary:
     """Tests for the search_voice_library function."""
 
-    def test_search_voice_library_empty(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.voices.get_shared",
+        return_value=create_mock(voices=[]),
+    )
+    def test_search_voice_library_empty(self, mock_get_shared, mock_client):
         """Test search with no results."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            patched_client.voices.get_shared.return_value = Mock(voices=[])
-            result = search_voice_library(search="nonexistent")
+        result = search_voice_library(search="nonexistent")
 
-            assert result.type == "text"
-            assert "No shared voices found" in result.text
+        assert result.type == "text"
+        assert "No shared voices found" in result.text
 
-    def test_search_voice_library_with_results(self, mock_client):
+    @patch(
+        "elevenlabs_mcp.server.client.voices.get_shared",
+        return_value=create_mock(
+            voices=[
+                create_mock(
+                    name="Test Voice",
+                    voice_id="voice123",
+                    category="professional",
+                    verified_languages=[],
+                )
+            ]
+        ),
+    )
+    def test_search_voice_library_with_results(self, mock_get_shared, mock_client):
         """Test search with results."""
-        with patch("elevenlabs_mcp.server.client") as patched_client:
-            mock_voice = Mock()
-            mock_voice.name = "Test Voice"
-            mock_voice.voice_id = "voice123"
-            mock_voice.category = "professional"
-            mock_voice.verified_languages = []
+        result = search_voice_library(search="test")
 
-            patched_client.voices.get_shared.return_value = Mock(voices=[mock_voice])
-            result = search_voice_library(search="test")
-
-            assert result.type == "text"
-            assert "Test Voice" in result.text
-            assert "voice123" in result.text
+        assert result.type == "text"
+        assert "Test Voice" in result.text
+        assert "voice123" in result.text
 
 
 class TestGetElevenlabsResource:
