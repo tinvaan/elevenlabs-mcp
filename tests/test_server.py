@@ -18,8 +18,7 @@ from elevenlabs_mcp.server import (
     get_conversation,
     list_conversations,
     search_voice_library,
-    get_elevenlabs_resource,
-    _is_broken_pipe_error
+    get_elevenlabs_resource
 )
 
 
@@ -332,25 +331,3 @@ class TestGetElevenlabsResource:
         with patch("elevenlabs_mcp.server.base_path", str(temp_dir)):
             with pytest.raises(FileNotFoundError):
                 get_elevenlabs_resource("nonexistent.mp3")
-
-
-class TestIsBrokenPipeError:
-    """Tests for the _is_broken_pipe_error helper."""
-
-    def test_broken_pipe_error(self, mock_client):
-        """Test detecting BrokenPipeError."""
-        assert _is_broken_pipe_error(BrokenPipeError()) is True
-
-    def test_other_error(self, mock_client):
-        """Test non-BrokenPipeError."""
-        assert _is_broken_pipe_error(ValueError("test")) is False
-
-    def test_exception_group_all_broken_pipe(self, mock_client):
-        """Test ExceptionGroup with all BrokenPipeErrors."""
-        group = BaseExceptionGroup("test", [BrokenPipeError(), BrokenPipeError()])
-        assert _is_broken_pipe_error(group) is True
-
-    def test_exception_group_mixed(self, mock_client):
-        """Test ExceptionGroup with mixed exceptions."""
-        group = BaseExceptionGroup("test", [BrokenPipeError(), ValueError("test")])
-        assert _is_broken_pipe_error(group) is False

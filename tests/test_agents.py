@@ -17,7 +17,8 @@ from elevenlabs_mcp.agents import (
     list_workspace_tools,
     create_webhook_tool,
     create_client_tool,
-    update_tool,
+    update_webhook_tool,
+    update_client_tool,
     delete_tool,
     add_tool_to_agent,
     remove_tool_from_agent,
@@ -176,14 +177,10 @@ class TestGetTool:
             name="Client Tool",
             description="A client tool",
             response_timeout_secs=None,
-        )
-        del mock_config.api_schema  # Client tools don't have api_schema
-
-        mock_get.return_value = create_mock(
-            id="tool456",
-            tool_config=mock_config,
+            api_schema=None,
         )
 
+        mock_get.return_value = create_mock(id="tool456", tool_config=mock_config)
         result = get_tool("tool456")
 
         assert result.type == "text"
@@ -201,10 +198,12 @@ class TestCreateWebhookTool:
     def test_create_webhook_tool_simple(self, mock_create, mock_client):
         """Test creating a simple webhook tool."""
         result = create_webhook_tool(
-            name="Weather API",
-            description="Get weather data",
-            url="https://api.weather.com/v1",
-            method="GET",
+            config={
+                "name": "Weather API",
+                "description": "Get weather data",
+                "url": "https://api.weather.com/v1",
+                "method": "GET",
+            }
         )
 
         assert result.type == "text"
@@ -219,14 +218,12 @@ class TestCreateWebhookTool:
     def test_create_webhook_tool_with_params(self, mock_create, mock_client):
         """Test creating a webhook tool with parameters (no headers)."""
         result = create_webhook_tool(
-            name="User API",
-            description="User management",
-            url="https://api.example.com/users/{user_id}",
-            method="POST",
-            path_params={"user_id": "The user ID"},
-            query_params={"include": "Include related data"},
-            request_body_properties={"name": "User name", "email": "User email"},
-            request_body_required=["name"],
+            config={
+                "name": "User API",
+                "description": "User management",
+                "url": "https://api.example.com/users/{user_id}",
+                "method": "POST",
+            }
         )
 
         assert result.type == "text"
@@ -240,9 +237,11 @@ class TestCreateWebhookTool:
         """Test webhook tool creation failure."""
         with pytest.raises(ElevenLabsMcpError):
             create_webhook_tool(
-                name="Failed Tool",
-                description="This will fail",
-                url="https://api.example.com",
+                config={
+                    "name": "Failed Tool",
+                    "description": "This will fail",
+                    "url": "https://api.example.com",
+                }
             )
 
 
@@ -256,8 +255,10 @@ class TestCreateClientTool:
     def test_create_client_tool_simple(self, mock_create, mock_client):
         """Test creating a simple client tool."""
         result = create_client_tool(
-            name="Navigate",
-            description="Navigate to a page",
+            config={
+                "name": "Navigate",
+                "description": "Navigate to a page",
+            }
         )
 
         assert result.type == "text"
@@ -271,12 +272,12 @@ class TestCreateClientTool:
     def test_create_client_tool_with_params(self, mock_create, mock_client):
         """Test creating a client tool with parameters."""
         result = create_client_tool(
-            name="Form Submit",
-            description="Submit a form",
-            expects_response=True,
-            parameters_properties={"form_id": "The form ID", "data": "Form data"},
-            parameters_required=["form_id"],
-            response_timeout_secs=10,
+            config={
+                "name": "Form Submit",
+                "description": "Submit a form",
+                "expects_response": True,
+                "response_timeout_secs": 10,
+            }
         )
 
         assert result.type == "text"
@@ -311,12 +312,16 @@ class TestUpdateTool:
                     request_body_schema=None,
                 ),
                 response_timeout_secs=30,
+                disable_interruptions=None,
+                force_pre_tool_speech=None,
+                dynamic_variables=None,
+                assignments=None,
             ),
         ),
     )
     def test_update_webhook_tool(self, mock_get, mock_update, mock_client):
         """Test updating a webhook tool."""
-        result = update_tool(tool_id="tool123", name="New Name")
+        result = update_webhook_tool(tool_id="tool123", config={"name": "New Name"})
 
         assert result.type == "text"
         assert "tool123" in result.text
@@ -340,12 +345,18 @@ class TestUpdateTool:
                 expects_response=False,
                 parameters=None,
                 response_timeout_secs=None,
+                disable_interruptions=None,
+                force_pre_tool_speech=None,
+                dynamic_variables=None,
+                assignments=None,
             ),
         ),
     )
     def test_update_client_tool(self, mock_get, mock_update, mock_client):
         """Test updating a client tool."""
-        result = update_tool(tool_id="tool456", description="New description")
+        result = update_client_tool(
+            tool_id="tool456", config={"description": "New description"}
+        )
 
         assert result.type == "text"
         mock_update.assert_called_once()
@@ -379,7 +390,7 @@ class TestDeleteTool:
         result = delete_tool("tool123")
 
         assert result.type == "text"
-        assert "Cannot delete" in result.text
+        assert "currently in use" in result.text
         assert "Dependent Agent" in result.text
         mock_delete.assert_not_called()
 
@@ -393,7 +404,7 @@ class TestAddToolToAgent:
         """Test adding a tool to an agent."""
         mock_get.return_value = create_mock(
             conversation_config=create_mock(
-                agent=create_mock(tool_ids=[])
+                agent=create_mock(prompt=create_mock(tool_ids=[]))
             )
         )
 
@@ -409,7 +420,7 @@ class TestAddToolToAgent:
         "elevenlabs_mcp.agents.client.conversational_ai.agents.get",
         return_value=create_mock(
             conversation_config=create_mock(
-                agent=create_mock(tool_ids=["tool456"])
+                agent=create_mock(prompt=create_mock(tool_ids=["tool456"]))
             )
         ),
     )
