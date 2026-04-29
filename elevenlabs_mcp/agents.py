@@ -30,7 +30,7 @@ from elevenlabs.types.knowledge_base_locator import KnowledgeBaseLocator
 from elevenlabs_mcp.convai import create_conversation_config, create_platform_settings
 from elevenlabs_mcp.mcp import mcp, client, DEFAULT_VOICE_ID
 from elevenlabs_mcp.utils import make_error, handle_input_file
-from mcp.types import TextContent
+from mcp.types import TextContent, ToolAnnotations
 
 
 class WebhookConfig(TypedDict):
@@ -114,6 +114,7 @@ class UpdateClientToolConfig(TypedDict):
 
 
 @mcp.tool(
+    annotations=ToolAnnotations(destructiveHint=False, openWorldHint=True),
     description="""Create a conversational AI agent with custom configuration.
 
     ⚠️ COST WARNING: This tool makes an API call to ElevenLabs which may incur costs. Only use when explicitly requested by the user.
@@ -192,6 +193,7 @@ def create_agent(
 
 
 @mcp.tool(
+    annotations=ToolAnnotations(destructiveHint=False, openWorldHint=True),
     description="""Add a knowledge base to ElevenLabs workspace. Allowed types are epub, pdf, docx, txt, html.
 
     ⚠️ COST WARNING: This tool makes an API call to ElevenLabs which may incur costs. Only use when explicitly requested by the user.
@@ -270,7 +272,10 @@ def add_knowledge_base_to_agent(
     )
 
 
-@mcp.tool(description="List all available conversational AI agents")
+@mcp.tool(
+    annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+    description="List all available conversational AI agents",
+)
 def list_agents() -> TextContent:
     """List all available conversational AI agents.
 
@@ -287,7 +292,10 @@ def list_agents() -> TextContent:
     return TextContent(type="text", text=f"Available agents: {agents}")
 
 
-@mcp.tool(description="Get details about a specific conversational AI agent")
+@mcp.tool(
+    annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+    description="Get details about a specific conversational AI agent",
+)
 def get_agent(agent_id: str) -> TextContent:
     """Get details about a specific conversational AI agent.
 
@@ -314,7 +322,10 @@ def get_agent(agent_id: str) -> TextContent:
     )
 
 
-@mcp.tool(description="List all tools available in the workspace")
+@mcp.tool(
+    annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+    description="List all tools available in the workspace",
+)
 def list_workspace_tools() -> TextContent:
     """List all tools available in the ElevenLabs workspace.
 
@@ -338,7 +349,10 @@ def list_workspace_tools() -> TextContent:
     )
 
 
-@mcp.tool(description="Get details about a specific tool")
+@mcp.tool(
+    annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+    description="Get details about a specific tool",
+)
 def get_tool(tool_id: str) -> TextContent:
     tool = client.conversational_ai.tools.get(tool_id=tool_id)
     config = tool.tool_config
@@ -365,6 +379,7 @@ def get_tool(tool_id: str) -> TextContent:
 
 
 @mcp.tool(
+    annotations=ToolAnnotations(destructiveHint=False, openWorldHint=True),
     description="""Create a new webhook tool for conversational AI agents.
 
     Webhook tools allow agents to make HTTP requests to external APIs during conversations.
@@ -426,6 +441,7 @@ def create_webhook_tool(
 
 
 @mcp.tool(
+    annotations=ToolAnnotations(destructiveHint=False, openWorldHint=True),
     description="""Create a new client tool for conversational AI agents.
 
     Client tools trigger events on the client side (e.g., in a web widget) rather than making server-side API calls.
@@ -477,6 +493,7 @@ def create_client_tool(
 
 
 @mcp.tool(
+    annotations=ToolAnnotations(destructiveHint=False, openWorldHint=True),
     description="""Update an existing webhook tool's configuration.
 
     ⚠️ COST WARNING: Updating tools may affect agents using this tool. Only use when explicitly requested.
@@ -562,6 +579,7 @@ def update_webhook_tool(
 
 
 @mcp.tool(
+    annotations=ToolAnnotations(destructiveHint=False, openWorldHint=True),
     description="""Update an existing client tool's configuration.
 
     ⚠️ COST WARNING: Updating tools may affect agents using this tool. Only use when explicitly requested.
@@ -638,6 +656,7 @@ def update_client_tool(
 
 
 @mcp.tool(
+    annotations=ToolAnnotations(destructiveHint=True, openWorldHint=True),
     description="""Delete a tool from the workspace.
 
     ⚠️ WARNING: This action cannot be undone. Agents using this tool will lose access to it.
@@ -671,6 +690,7 @@ def delete_tool(tool_id: str) -> TextContent:
 
 
 @mcp.tool(
+    annotations=ToolAnnotations(destructiveHint=False, openWorldHint=True),
     description="""Add a tool to a conversational AI agent.
 
     This attaches an existing workspace tool to an agent so the agent can use it during conversations.
@@ -717,6 +737,7 @@ def add_tool_to_agent(agent_id: str, tool_id: str) -> TextContent:
 
 
 @mcp.tool(
+    annotations=ToolAnnotations(destructiveHint=False, openWorldHint=True),
     description="""Remove a tool from a conversational AI agent.
 
     ⚠️ COST WARNING: This modifies agent configuration. Only use when explicitly requested.
@@ -760,7 +781,10 @@ def remove_tool_from_agent(agent_id: str, tool_id: str) -> TextContent:
     )
 
 
-@mcp.tool(description="Get a list of agents that are using a specific tool")
+@mcp.tool(
+    annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+    description="Get a list of agents that are using a specific tool",
+)
 def get_tool_dependent_agents(
     tool_id: str,
     page_size: int = 30,
