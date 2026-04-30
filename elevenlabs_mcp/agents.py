@@ -221,6 +221,7 @@ def add_knowledge_base_to_agent(
     if len(provided_params) > 1:
         make_error("Must provide exactly one of: URL, file, or text")
 
+    response = None
     if url is not None:
         response = client.conversational_ai.knowledge_base.documents.create_from_url(
             name=knowledge_base_name,
@@ -228,33 +229,29 @@ def add_knowledge_base_to_agent(
         )
     else:
         if text is not None:
-            text_bytes = text.encode("utf-8")
-            text_io = BytesIO(text_bytes)
-            text_io.name = "text.txt"
-            text_io.content_type = "text/plain"
-            file = text_io
-        elif input_file_path is not None:
-            path = handle_input_file(
-                file_path=input_file_path, audio_content_check=False
-            )
-            file = open(path, "rb")
+            response = client.conversational_ai.knowledge_base.documents.create_from_text(text=text)
 
-        response = client.conversational_ai.knowledge_base.documents.create_from_file(
-            name=knowledge_base_name,
-            file=file,
-        )
+        elif input_file_path is not None:
+            path = handle_input_file(file_path=input_file_path, audio_content_check=False)
+            with open(path,  "rb") as f:
+                response = client.conversational_ai.knowledge_base.documents.create_from_file(
+                    name=knowledge_base_name,
+                    file=f,
+                )
+
+    if not response:
+        make_error("Failed to create knowledge base document.")
 
     agent = client.conversational_ai.agents.get(agent_id=agent_id)
-
     agent_config = agent.conversation_config.agent
     knowledge_base_list = (
         agent_config.get("prompt", {}).get("knowledge_base", []) if agent_config else []
     )
     knowledge_base_list.append(
         KnowledgeBaseLocator(
-            type="file" if file else "url",
-            name=knowledge_base_name,
             id=response.id,
+            name=knowledge_base_name,
+            type="url" if url is not None else ("text" if text is not None else "file"),
         )
     )
 
@@ -810,8 +807,8 @@ def get_tool_dependent_agents(
         for agent in deps.agents:
             if getattr(agent, "type", "unknown") == "available":
                 agents = "\n".join(
-                    f"- {getattr(agent, 'name', 'Unknown')} (ID: {getattr(agent, 'id', 'Unknown')})"
-                    for agent in deps.agents
+                    f"- {getattr(_agent, 'name', 'Unknown')} (ID: {getattr(_agent, 'id', 'Unknown')})"
+                    for _agent in deps.agents
                 )
 
         return TextContent(
