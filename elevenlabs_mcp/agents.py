@@ -6,6 +6,7 @@ server tools (webhooks and client tools).
 """
 
 from datetime import datetime
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 from io import BytesIO
 
@@ -52,6 +53,8 @@ class WebhookConfig(TypedDict):
     response_timeout_secs: NotRequired[int]
     disable_interruptions: NotRequired[bool]
     force_pre_tool_speech: NotRequired[bool]
+    dynamic_variables: NotRequired[DynamicVariablesConfig]
+    assignments: NotRequired[list[DynamicVariableAssignment]]
 
 
 class ClientToolConfig(TypedDict):
@@ -71,6 +74,8 @@ class ClientToolConfig(TypedDict):
     response_timeout_secs: NotRequired[int]
     disable_interruptions: NotRequired[bool]
     force_pre_tool_speech: NotRequired[bool]
+    dynamic_variables: NotRequired[DynamicVariablesConfig]
+    assignments: NotRequired[list[DynamicVariableAssignment]]
 
 
 class UpdateWebhookConfig(TypedDict):
@@ -88,10 +93,12 @@ class UpdateWebhookConfig(TypedDict):
     url: NotRequired[str]
     name: NotRequired[str]
     description: NotRequired[str]
-    method: NotRequired[WebhookToolApiSchemaConfigInputMethod]
     response_timeout_secs: NotRequired[int]
     disable_interruptions: NotRequired[bool]
     force_pre_tool_speech: NotRequired[bool]
+    dynamic_variables: NotRequired[DynamicVariablesConfig]
+    assignments: NotRequired[list[DynamicVariableAssignment]]
+    method: NotRequired[WebhookToolApiSchemaConfigInputMethod]
 
 
 class UpdateClientToolConfig(TypedDict):
@@ -111,6 +118,8 @@ class UpdateClientToolConfig(TypedDict):
     response_timeout_secs: NotRequired[int]
     disable_interruptions: NotRequired[bool]
     force_pre_tool_speech: NotRequired[bool]
+    dynamic_variables: NotRequired[DynamicVariablesConfig]
+    assignments: NotRequired[list[DynamicVariableAssignment]]
 
 
 @mcp.tool(
@@ -406,26 +415,29 @@ def create_webhook_tool(
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
     try:
+        props = list(ToolRequestModelToolConfig_Webhook.__annotations__.keys())
+        kwargs = {k: v for k, v in config.items() if k in props and v is not None}
+        kwargs.update(
+            {
+                "api_schema": WebhookToolApiSchemaConfigInput(
+                    **{
+                        "url": config["url"],
+                        "method": config.get("method", "GET"),
+                        **({"request_headers": headers} if headers is not None else {}),
+                        **({"path_params_schema": urlparams} if urlparams is not None else {}),
+                        **({"query_params_schema": qparams} if qparams is not None else {}),
+                        **({"request_body_schema": body} if body is not None else {}),
+                    }
+                ),
+                **({"assignments": dynamic_vars_assign} if dynamic_vars_assign is not None else {}),
+                **({"dynamic_variables": DynamicVariablesConfig(
+                        dynamic_variable_placeholders=dynamic_vars
+                    )} if dynamic_vars is not None else {}
+                ),
+            }
+        )
         tool = client.conversational_ai.tools.create(
-            request=ToolRequestModel(
-                tool_config=ToolRequestModelToolConfig_Webhook(
-                    name=config["name"],
-                    description=config["description"],
-                    api_schema=WebhookToolApiSchemaConfigInput(
-                        url=config["url"],
-                        method=config.get("method", "GET"),
-                        request_headers=headers,
-                        path_params_schema=urlparams,
-                        query_params_schema=qparams,
-                        request_body_schema=body,
-                    ),
-                    response_timeout_secs=config.get("response_timeout_secs"),
-                    disable_interruptions=config.get("disable_interruptions"),
-                    force_pre_tool_speech=config.get("force_pre_tool_speech"),
-                    dynamic_variables=DynamicVariablesConfig(dynamic_variable_placeholders=dynamic_vars) if dynamic_vars else None,
-                    assignments=dynamic_vars_assign,
-                )
-            )
+            request=ToolRequestModel(tool_config=ToolRequestModelToolConfig_Webhook(**kwargs))
         )
         return TextContent(
             type="text",
@@ -463,20 +475,22 @@ def create_client_tool(
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
     try:
-        tool = client.conversational_ai.tools.create(
-            request=ToolRequestModel(
-                tool_config=ToolRequestModelToolConfig_Client(
-                    name=config["name"],
-                    description=config["description"],
-                    expects_response=config.get("expects_response", False),
-                    parameters=parameters,
-                    response_timeout_secs=config.get("response_timeout_secs"),
-                    disable_interruptions=config.get("disable_interruptions"),
-                    force_pre_tool_speech=config.get("force_pre_tool_speech"),
-                    dynamic_variables=DynamicVariablesConfig(dynamic_variable_placeholders=dynamic_vars) if dynamic_vars else None,
-                    assignments=dynamic_vars_assign,
+        props = list(ToolRequestModelToolConfig_Client.__annotations__.keys())
+        kwargs = {k: v for k, v in config.items() if k in props and v is not None}
+        kwargs.update(
+            {
+                "expects_response": config.get("expects_response", False),
+                **({"parameters": parameters} if parameters is not None else {}),
+                **({"assignments": dynamic_vars_assign} if dynamic_vars_assign is not None else {}),
+                **({"dynamic_variables": DynamicVariablesConfig(
+                        dynamic_variable_placeholders=dynamic_vars
+                    )} if dynamic_vars is not None else {}
                 )
-            )
+            }
+        )
+
+        tool = client.conversational_ai.tools.create(
+            request=ToolRequestModel(tool_config=ToolRequestModelToolConfig_Client(**kwargs))
         )
         return TextContent(
             type="text",
@@ -519,51 +533,48 @@ def update_webhook_tool(
     dynamic_vars: dict[str, DynamicVariablesConfigDynamicVariablePlaceholdersValue] | None = None,
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
-    config = config or {}
     curr = client.conversational_ai.tools.get(tool_id=tool_id)
     schema = getattr(curr.tool_config, "api_schema", None)
-
     if getattr(curr.tool_config, "type") != "webhook":
         make_error(f"Tool {tool_id} is not a webhook tool")
 
     try:
+        # Populate required configurations using provided or existing tool config
+        config = config or UpdateWebhookConfig()
+        config.update({
+            "name": config.get("name", getattr(curr.tool_config, "name")),
+            "description": config.get("description", getattr(curr.tool_config, "description")),
+            **({"assignments": dynamic_vars_assign} if dynamic_vars_assign is not None else {}),
+            **({"dynamic_variables": DynamicVariablesConfig(
+                    dynamic_variable_placeholders=dynamic_vars
+                )} if dynamic_vars is not None else {}
+            )
+        }) # type: ignore
+
+        body = body if body is not None else getattr(schema, "request_body_schema")
+        headers = headers if headers is not None else getattr(schema, "request_headers")
+        qparams = qparams if qparams is not None else getattr(schema, "query_params_schema")
+        urlparams = urlparams if urlparams is not None else getattr(schema, "path_params_schema")
+
+        props = list(ToolRequestModelToolConfig_Webhook.__annotations__.keys())
+        kwargs = {
+            k: v if v is not None else getattr(curr.tool_config, k, None)
+            for k, v in config.items() if k in props
+        }
+        kwargs.update({
+            "api_schema": WebhookToolApiSchemaConfigInput(**{
+                "url": config.get("url", getattr(schema, "url", "")),
+                "method": config.get("method", getattr(schema, "method", "GET")),
+                **({"request_body_schema": body} if body is not None else {}),
+                **({"request_headers": headers} if headers is not None else {}),
+                **({"query_params_schema": qparams} if qparams is not None else {}),
+                **({"path_params_schema": urlparams} if urlparams is not None else {}),
+            })
+        })
+        kwargs = {k: v for k, v in kwargs.items() if v is not None}
         modified = client.conversational_ai.tools.update(
             tool_id=tool_id,
-            request=ToolRequestModel(
-                tool_config=ToolRequestModelToolConfig_Webhook(
-                    name=config.get("name", getattr(curr.tool_config, "name")),
-                    description=config.get("description", getattr(curr.tool_config, "description")),
-                    api_schema=WebhookToolApiSchemaConfigInput(
-                        url=config.get("url", getattr(schema, "url", "")),
-                        method=config.get("method", getattr(schema, "method", "GET")),
-                        request_headers=headers or getattr(schema, "request_headers"),
-                        path_params_schema=urlparams or getattr(schema, "path_params_schema"),
-                        query_params_schema=qparams or getattr(schema, "query_params_schema"),
-                        request_body_schema=body or getattr(schema, "request_body_schema"),
-                    ),
-                    response_timeout_secs=(
-                        config.get("response_timeout_secs")
-                        if "response_timeout_secs" in config
-                        else getattr(curr.tool_config, "response_timeout_secs")
-                    ),
-                    disable_interruptions=(
-                        config.get("disable_interruptions")
-                        if "disable_interruptions" in config
-                        else getattr(curr.tool_config, "disable_interruptions")
-                    ),
-                    force_pre_tool_speech=(
-                        config.get("force_pre_tool_speech")
-                        if "force_pre_tool_speech" in config
-                        else getattr(curr.tool_config, "force_pre_tool_speech")
-                    ),
-                    dynamic_variables=(
-                        DynamicVariablesConfig(dynamic_variable_placeholders=dynamic_vars)
-                        if dynamic_vars is not None
-                        else getattr(curr.tool_config, "dynamic_variables")
-                    ),
-                    assignments=dynamic_vars_assign or getattr(curr.tool_config, "assignments"),
-                )
-            ),
+            request=ToolRequestModel(tool_config=ToolRequestModelToolConfig_Webhook(**kwargs)),
         )
         return TextContent(
             type="text",
@@ -599,47 +610,41 @@ def update_client_tool(
     dynamic_vars: dict[str, DynamicVariablesConfigDynamicVariablePlaceholdersValue] | None = None,
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
-    config = config or {}
     curr = client.conversational_ai.tools.get(tool_id=tool_id)
 
     if getattr(curr.tool_config, "type") != "client":
         make_error(f"Tool {tool_id} is not a client tool")
 
     try:
+        # Populate required configurations using provided or existing tool config
+        config = config or UpdateClientToolConfig()
+        config.update({
+            "name": config.get("name", getattr(curr.tool_config, "name")),
+            "description": config.get("description", getattr(curr.tool_config, "description")),
+            "expects_response": config.get("expects_response", getattr(curr.tool_config, "expects_response", False)),
+            **({"assignments": dynamic_vars_assign} if dynamic_vars_assign is not None else {}),
+            **({"dynamic_variables": DynamicVariablesConfig(
+                    dynamic_variable_placeholders=dynamic_vars
+                )} if dynamic_vars is not None else {}
+            )
+        })  # type: ignore
+
+        parameters = (
+            parameters if parameters is not None else getattr(curr.tool_config, "parameters")
+        )
+
+        props = list(ToolRequestModelToolConfig_Client.__annotations__.keys())
+        kwargs = {
+            k: v if v is not None else getattr(curr.tool_config, k, None)
+            for k, v in config.items() if k in props
+        }
+        kwargs.update({**({"parameters": parameters} if parameters is not None else {})})
+        kwargs = {k: v for k, v in kwargs.items() if v is not None}
+
         modified = client.conversational_ai.tools.update(
             tool_id=tool_id,
             request=ToolRequestModel(
-                tool_config=ToolRequestModelToolConfig_Client(
-                    name=config.get("name", getattr(curr.tool_config, "name")),
-                    description=config.get("description", getattr(curr.tool_config, "description")),
-                    parameters=parameters or getattr(curr.tool_config, "parameters"),
-                    expects_response=(
-                        config.get("expects_response")
-                        if "expects_response" in config
-                        else getattr(curr.tool_config, "expects_response", False)
-                    ),
-                    response_timeout_secs=(
-                        config.get("response_timeout_secs")
-                        if "response_timeout_secs" in config
-                        else getattr(curr.tool_config, "response_timeout_secs")
-                    ),
-                    disable_interruptions=(
-                        config.get("disable_interruptions")
-                        if "disable_interruptions" in config
-                        else getattr(curr.tool_config, "disable_interruptions")
-                    ),
-                    force_pre_tool_speech=(
-                        config.get("force_pre_tool_speech")
-                        if "force_pre_tool_speech" in config
-                        else getattr(curr.tool_config, "force_pre_tool_speech")
-                    ),
-                    dynamic_variables=(
-                        DynamicVariablesConfig(dynamic_variable_placeholders=dynamic_vars)
-                        if dynamic_vars is not None
-                        else getattr(curr.tool_config, "dynamic_variables")
-                    ),
-                    assignments=dynamic_vars_assign if dynamic_vars_assign else getattr(curr.tool_config, "assignments"),
-                )
+                tool_config=ToolRequestModelToolConfig_Client(**kwargs)
             ),
         )
         return TextContent(
