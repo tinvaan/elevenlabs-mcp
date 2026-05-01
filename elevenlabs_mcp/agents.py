@@ -800,14 +800,11 @@ def get_tool_dependent_agents(
         if not deps.agents:
             return TextContent(type="text", text="No agents are using this tool.")
 
-        agents = ""
-        for agent in deps.agents:
-            if getattr(agent, "type", "unknown") == "available":
-                agents = "\n".join(
-                    f"- {getattr(_agent, 'name', 'Unknown')} (ID: {getattr(_agent, 'id', 'Unknown')})"
-                    for _agent in deps.agents
-                )
-
+        agents = "\n".join(
+            f"- {getattr(agent, 'name', 'Unknown')} (ID: {getattr(agent, 'id', 'Unknown')})"
+            for agent in deps.agents
+            if getattr(agent, "type", "unknown") == "available"
+        )
         return TextContent(
             type="text",
             text=f"Agents using this tool ({len(deps.agents)} total):\n{agents}",
