@@ -6,9 +6,7 @@ server tools (webhooks and client tools).
 """
 
 from datetime import datetime
-from typing import List
 from typing_extensions import TypedDict, NotRequired
-from io import BytesIO
 
 from elevenlabs.types import (
     AgentConfig,
@@ -446,7 +444,6 @@ def create_webhook_tool(
         )
     except Exception as e:
         make_error(f"Failed to create webhook tool: {str(e)}")
-        return TextContent(type="text", text="")
 
 
 @mcp.tool(
@@ -500,7 +497,6 @@ def create_client_tool(
         )
     except Exception as e:
         make_error(f"Failed to create client tool: {str(e)}")
-        return TextContent(type="text", text="")
 
 
 @mcp.tool(
@@ -583,7 +579,6 @@ def update_webhook_tool(
         )
     except Exception as e:
         make_error(f"Failed to update webhook tool: {str(e)}")
-        return TextContent(type="text", text="")
 
 
 @mcp.tool(
@@ -654,7 +649,6 @@ def update_client_tool(
         )
     except Exception as e:
         make_error(f"Failed to update client tool: {str(e)}")
-        return TextContent(type="text", text="")
 
 
 @mcp.tool(
@@ -688,7 +682,6 @@ def delete_tool(tool_id: str) -> TextContent:
         )
     except Exception as e:
         make_error(f"Failed to delete tool: {str(e)}")
-        return TextContent(type="text", text="")
 
 
 @mcp.tool(
@@ -735,7 +728,6 @@ def add_tool_to_agent(agent_id: str, tool_id: str) -> TextContent:
         )
     except Exception as e:
         make_error(f"Failed to add tool to agent: {str(e)}")
-        return TextContent(type="text", text="")
 
 
 @mcp.tool(
@@ -822,4 +814,3 @@ def get_tool_dependent_agents(
         )
     except Exception as e:
         make_error(f"Failed to get dependent agents: {str(e)}")
-        return TextContent(type="text", text="")
