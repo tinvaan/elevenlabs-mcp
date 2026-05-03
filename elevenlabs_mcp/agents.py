@@ -12,8 +12,8 @@ from elevenlabs.types import (
     AgentConfig,
     ConversationalConfig,
     DynamicVariableAssignment,
-    DynamicVariablesConfig,
-    DynamicVariablesConfigDynamicVariablePlaceholdersValue,
+    DynamicVariablesConfigInput,
+    DynamicVariableValueTypeInput,
     LiteralJsonSchemaProperty,
     ObjectJsonSchemaPropertyInput,
     PromptAgentApiModelOutput,
@@ -51,7 +51,7 @@ class WebhookConfig(TypedDict):
     response_timeout_secs: NotRequired[int]
     disable_interruptions: NotRequired[bool]
     force_pre_tool_speech: NotRequired[bool]
-    dynamic_variables: NotRequired[DynamicVariablesConfig]
+    dynamic_variables: NotRequired[DynamicVariablesConfigInput]
     assignments: NotRequired[list[DynamicVariableAssignment]]
 
 
@@ -72,7 +72,7 @@ class ClientToolConfig(TypedDict):
     response_timeout_secs: NotRequired[int]
     disable_interruptions: NotRequired[bool]
     force_pre_tool_speech: NotRequired[bool]
-    dynamic_variables: NotRequired[DynamicVariablesConfig]
+    dynamic_variables: NotRequired[DynamicVariablesConfigInput]
     assignments: NotRequired[list[DynamicVariableAssignment]]
 
 
@@ -94,7 +94,7 @@ class UpdateWebhookConfig(TypedDict):
     response_timeout_secs: NotRequired[int]
     disable_interruptions: NotRequired[bool]
     force_pre_tool_speech: NotRequired[bool]
-    dynamic_variables: NotRequired[DynamicVariablesConfig]
+    dynamic_variables: NotRequired[DynamicVariablesConfigInput]
     assignments: NotRequired[list[DynamicVariableAssignment]]
     method: NotRequired[WebhookToolApiSchemaConfigInputMethod]
 
@@ -116,7 +116,7 @@ class UpdateClientToolConfig(TypedDict):
     response_timeout_secs: NotRequired[int]
     disable_interruptions: NotRequired[bool]
     force_pre_tool_speech: NotRequired[bool]
-    dynamic_variables: NotRequired[DynamicVariablesConfig]
+    dynamic_variables: NotRequired[DynamicVariablesConfigInput]
     assignments: NotRequired[list[DynamicVariableAssignment]]
 
 
@@ -409,7 +409,7 @@ def create_webhook_tool(
     urlparams: dict[str, LiteralJsonSchemaProperty] | None = None,
     qparams: QueryParamsJsonSchema | None = None,
     body: ObjectJsonSchemaPropertyInput | None = None,
-    dynamic_vars: dict[str, DynamicVariablesConfigDynamicVariablePlaceholdersValue] | None = None,
+    dynamic_vars: dict[str, DynamicVariableValueTypeInput] | None = None,
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
     try:
@@ -428,7 +428,7 @@ def create_webhook_tool(
                     }
                 ),
                 **({"assignments": dynamic_vars_assign} if dynamic_vars_assign is not None else {}),
-                **({"dynamic_variables": DynamicVariablesConfig(
+                **({"dynamic_variables": DynamicVariablesConfigInput(
                         dynamic_variable_placeholders=dynamic_vars
                     )} if dynamic_vars is not None else {}
                 ),
@@ -468,7 +468,7 @@ def create_webhook_tool(
 def create_client_tool(
     config: ClientToolConfig,
     parameters: ObjectJsonSchemaPropertyInput | None = None,
-    dynamic_vars: dict[str, DynamicVariablesConfigDynamicVariablePlaceholdersValue] | None = None,
+    dynamic_vars: dict[str, DynamicVariableValueTypeInput] | None = None,
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
     try:
@@ -479,7 +479,7 @@ def create_client_tool(
                 "expects_response": config.get("expects_response", False),
                 **({"parameters": parameters} if parameters is not None else {}),
                 **({"assignments": dynamic_vars_assign} if dynamic_vars_assign is not None else {}),
-                **({"dynamic_variables": DynamicVariablesConfig(
+                **({"dynamic_variables": DynamicVariablesConfigInput(
                         dynamic_variable_placeholders=dynamic_vars
                     )} if dynamic_vars is not None else {}
                 )
@@ -526,7 +526,7 @@ def update_webhook_tool(
     urlparams: dict[str, LiteralJsonSchemaProperty] | None = None,
     qparams: QueryParamsJsonSchema | None = None,
     body: ObjectJsonSchemaPropertyInput | None = None,
-    dynamic_vars: dict[str, DynamicVariablesConfigDynamicVariablePlaceholdersValue] | None = None,
+    dynamic_vars: dict[str, DynamicVariableValueTypeInput] | None = None,
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
     curr = client.conversational_ai.tools.get(tool_id=tool_id)
@@ -541,7 +541,7 @@ def update_webhook_tool(
             "name": config.get("name", getattr(curr.tool_config, "name")),
             "description": config.get("description", getattr(curr.tool_config, "description")),
             **({"assignments": dynamic_vars_assign} if dynamic_vars_assign is not None else {}),
-            **({"dynamic_variables": DynamicVariablesConfig(
+            **({"dynamic_variables": DynamicVariablesConfigInput(
                     dynamic_variable_placeholders=dynamic_vars
                 )} if dynamic_vars is not None else {}
             )
@@ -602,7 +602,7 @@ def update_client_tool(
     tool_id: str,
     config: UpdateClientToolConfig | None = None,
     parameters: ObjectJsonSchemaPropertyInput | None = None,
-    dynamic_vars: dict[str, DynamicVariablesConfigDynamicVariablePlaceholdersValue] | None = None,
+    dynamic_vars: dict[str, DynamicVariableValueTypeInput] | None = None,
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
     curr = client.conversational_ai.tools.get(tool_id=tool_id)
@@ -618,7 +618,7 @@ def update_client_tool(
             "description": config.get("description", getattr(curr.tool_config, "description")),
             "expects_response": config.get("expects_response", getattr(curr.tool_config, "expects_response", False)),
             **({"assignments": dynamic_vars_assign} if dynamic_vars_assign is not None else {}),
-            **({"dynamic_variables": DynamicVariablesConfig(
+            **({"dynamic_variables": DynamicVariablesConfigInput(
                     dynamic_variable_placeholders=dynamic_vars
                 )} if dynamic_vars is not None else {}
             )
