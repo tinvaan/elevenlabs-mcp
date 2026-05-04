@@ -10,6 +10,7 @@ from typing_extensions import TypedDict, NotRequired
 
 from elevenlabs.types import (
     AgentConfig,
+    ArrayJsonSchemaPropertyInput,
     ConversationalConfig,
     DynamicVariableAssignment,
     DynamicVariablesConfig,
@@ -30,6 +31,8 @@ from elevenlabs_mcp.convai import create_conversation_config, create_platform_se
 from elevenlabs_mcp.mcp import mcp, client, DEFAULT_VOICE_ID
 from elevenlabs_mcp.utils import make_error, handle_input_file
 from mcp.types import TextContent, ToolAnnotations
+
+ObjectJsonSchemaPropertyInput.model_rebuild()
 
 
 class WebhookConfig(TypedDict):
@@ -408,7 +411,7 @@ def create_webhook_tool(
     headers: dict[str, WebhookToolApiSchemaConfigInputRequestHeadersValue] | None = None,
     urlparams: dict[str, LiteralJsonSchemaProperty] | None = None,
     qparams: QueryParamsJsonSchema | None = None,
-    body: ObjectJsonSchemaPropertyInput | None = None,
+    body: ObjectJsonSchemaPropertyInput | ArrayJsonSchemaPropertyInput | None = None,
     dynamic_vars: dict[str, DynamicVariablesConfigDynamicVariablePlaceholdersValue] | None = None,
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
@@ -525,7 +528,7 @@ def update_webhook_tool(
     headers: dict[str, WebhookToolApiSchemaConfigInputRequestHeadersValue] | None = None,
     urlparams: dict[str, LiteralJsonSchemaProperty] | None = None,
     qparams: QueryParamsJsonSchema | None = None,
-    body: ObjectJsonSchemaPropertyInput | None = None,
+    body: ObjectJsonSchemaPropertyInput | ArrayJsonSchemaPropertyInput | None = None,
     dynamic_vars: dict[str, DynamicVariablesConfigDynamicVariablePlaceholdersValue] | None = None,
     dynamic_vars_assign: list[DynamicVariableAssignment] | None = None,
 ) -> TextContent:
