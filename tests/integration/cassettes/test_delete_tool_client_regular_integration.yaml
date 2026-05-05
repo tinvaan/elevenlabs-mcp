@@ -27,8 +27,9 @@ interactions:
     uri: https://api.elevenlabs.io/v1/convai/tools
   response:
     body:
-      string: '{"id":"tool_6701kqvhvgq7fnnvvm3thrvcgthv","tool_config":{"type":"client","name":"integration-client-delete-tool","description":"Integration
-        delete client tool","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","parameters":null,"expects_response":false,"dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate"},"access_info":{"is_creator":true,"creator_name":"harishnavnit@gmail.com","creator_email":"harishnavnit@gmail.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
+      string: '{"id":"tool_0001test_tool","tool_config":{"type":"client","name":"integration-client-delete-tool","description":"Integration
+        delete client tool","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","parameters":null,"expects_response":false,"dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate"},"access_info":{"is_creator":true,"creator_name":"Test
+        User","creator_email":"test@example.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000
@@ -49,7 +50,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 07:50:15 GMT
+      - Tue, 05 May 2026 10:45:31 GMT
       server:
       - uvicorn
       vary:
@@ -57,7 +58,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 2ea433358863c3524ba35804abd2c546
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
@@ -81,7 +82,7 @@ interactions:
       X-Fern-SDK-Version:
       - 2.45.0
     method: GET
-    uri: https://api.elevenlabs.io/v1/convai/tools/tool_6701kqvhvgq7fnnvvm3thrvcgthv/dependent-agents
+    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0001test_tool/dependent-agents
   response:
     body:
       string: '{"agents":[],"branches":[],"next_cursor":null,"has_more":false}'
@@ -105,7 +106,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 07:50:15 GMT
+      - Tue, 05 May 2026 10:45:31 GMT
       server:
       - uvicorn
       vary:
@@ -113,7 +114,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 7c2285d526bd9a0d092f3647b75bff21
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
@@ -137,7 +138,7 @@ interactions:
       X-Fern-SDK-Version:
       - 2.45.0
     method: DELETE
-    uri: https://api.elevenlabs.io/v1/convai/tools/tool_6701kqvhvgq7fnnvvm3thrvcgthv
+    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0001test_tool
   response:
     body:
       string: ''
@@ -157,7 +158,7 @@ interactions:
       access-control-max-age:
       - '600'
       date:
-      - Tue, 05 May 2026 07:50:15 GMT
+      - Tue, 05 May 2026 10:45:31 GMT
       server:
       - uvicorn
       vary:
@@ -165,7 +166,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 8015b89855ec01f4f8b708ec35af00f0
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 204
       message: No Content

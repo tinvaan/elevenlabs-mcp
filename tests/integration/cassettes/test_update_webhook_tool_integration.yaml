@@ -27,8 +27,9 @@ interactions:
     uri: https://api.elevenlabs.io/v1/convai/tools
   response:
     body:
-      string: '{"id":"tool_1501kqvge8cregaapbjnbcn4bk92","tool_config":{"type":"webhook","name":"integration-webhook-tool","description":"Integration
-        webhook tool","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate","api_schema":{"request_headers":{},"url":"https://example.com/hook","method":"GET","path_params_schema":{},"query_params_schema":null,"request_body_schema":null,"response_body_schema":null,"content_type":"application/json","auth_connection":null}},"access_info":{"is_creator":true,"creator_name":"harishnavnit@gmail.com","creator_email":"harishnavnit@gmail.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
+      string: '{"id":"tool_0001test_tool","tool_config":{"type":"webhook","name":"integration-webhook-tool","description":"Integration
+        webhook tool","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate","api_schema":{"request_headers":{},"url":"https://example.com/hook","method":"GET","path_params_schema":{},"query_params_schema":null,"request_body_schema":null,"response_body_schema":null,"content_type":"application/json","auth_connection":null}},"access_info":{"is_creator":true,"creator_name":"Test
+        User","creator_email":"test@example.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000
@@ -49,7 +50,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 07:25:32 GMT
+      - Tue, 05 May 2026 10:45:28 GMT
       server:
       - uvicorn
       vary:
@@ -57,7 +58,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 9565cca61845d701732917364907dfee
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
@@ -81,14 +82,15 @@ interactions:
       X-Fern-SDK-Version:
       - 2.45.0
     method: GET
-    uri: https://api.elevenlabs.io/v1/convai/tools/tool_1501kqvge8cregaapbjnbcn4bk92
+    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0001test_tool
   response:
     body:
-      string: '{"id":"tool_1501kqvge8cregaapbjnbcn4bk92","tool_config":{"type":"webhook","name":"integration-webhook-tool","description":"Integration
-        webhook tool","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate","api_schema":{"request_headers":{},"url":"https://example.com/hook","method":"GET","path_params_schema":{},"query_params_schema":null,"request_body_schema":null,"response_body_schema":null,"content_type":"application/json","auth_connection":null}},"access_info":{"is_creator":true,"creator_name":"harishnavnit@gmail.com","creator_email":"harishnavnit@gmail.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
+      string: '{"id":"tool_0001test_tool","tool_config":{"type":"webhook","name":"integration-webhook-tool","description":"Integration
+        webhook tool","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate","api_schema":{"request_headers":{},"url":"https://example.com/hook","method":"GET","path_params_schema":{},"query_params_schema":null,"request_body_schema":null,"response_body_schema":null,"content_type":"application/json","auth_connection":null}},"access_info":{"is_creator":true,"creator_name":"Test
+        User","creator_email":"test@example.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
     headers:
       Alt-Svc:
-      - h3=":443"; ma=2592000
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
       - '949'
       Strict-Transport-Security:
@@ -106,7 +108,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 07:25:32 GMT
+      - Tue, 05 May 2026 10:45:28 GMT
       server:
       - uvicorn
       vary:
@@ -114,7 +116,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - e5ab3f32ac6bdbfe5575f214788a1e79
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
@@ -143,14 +145,15 @@ interactions:
       content-type:
       - application/json
     method: PATCH
-    uri: https://api.elevenlabs.io/v1/convai/tools/tool_1501kqvge8cregaapbjnbcn4bk92
+    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0001test_tool
   response:
     body:
-      string: '{"id":"tool_1501kqvge8cregaapbjnbcn4bk92","tool_config":{"type":"webhook","name":"integration-webhook-tool-updated","description":"Integration
-        webhook tool updated","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate","api_schema":{"request_headers":{},"url":"https://example.com/hook-updated","method":"GET","path_params_schema":{},"query_params_schema":null,"request_body_schema":null,"response_body_schema":null,"content_type":"application/json","auth_connection":null}},"access_info":{"is_creator":true,"creator_name":"harishnavnit@gmail.com","creator_email":"harishnavnit@gmail.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
+      string: '{"id":"tool_0001test_tool","tool_config":{"type":"webhook","name":"integration-webhook-tool-updated","description":"Integration
+        webhook tool updated","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate","api_schema":{"request_headers":{},"url":"https://example.com/hook-updated","method":"GET","path_params_schema":{},"query_params_schema":null,"request_body_schema":null,"response_body_schema":null,"content_type":"application/json","auth_connection":null}},"access_info":{"is_creator":true,"creator_name":"Test
+        User","creator_email":"test@example.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
     headers:
       Alt-Svc:
-      - h3=":443"; ma=2592000
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
       - '973'
       Strict-Transport-Security:
@@ -168,7 +171,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 07:25:33 GMT
+      - Tue, 05 May 2026 10:45:29 GMT
       server:
       - uvicorn
       vary:
@@ -176,7 +179,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - fe7adc5ca57d571c7893a551c83d80b5
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
@@ -200,7 +203,7 @@ interactions:
       X-Fern-SDK-Version:
       - 2.45.0
     method: GET
-    uri: https://api.elevenlabs.io/v1/convai/tools/tool_1501kqvge8cregaapbjnbcn4bk92/dependent-agents
+    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0001test_tool/dependent-agents
   response:
     body:
       string: '{"agents":[],"branches":[],"next_cursor":null,"has_more":false}'
@@ -224,7 +227,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 07:25:33 GMT
+      - Tue, 05 May 2026 10:45:29 GMT
       server:
       - uvicorn
       vary:
@@ -232,7 +235,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 427505809abe51186b63fffb0b6e84e4
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
@@ -256,7 +259,7 @@ interactions:
       X-Fern-SDK-Version:
       - 2.45.0
     method: DELETE
-    uri: https://api.elevenlabs.io/v1/convai/tools/tool_1501kqvge8cregaapbjnbcn4bk92
+    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0001test_tool
   response:
     body:
       string: ''
@@ -276,7 +279,7 @@ interactions:
       access-control-max-age:
       - '600'
       date:
-      - Tue, 05 May 2026 07:25:33 GMT
+      - Tue, 05 May 2026 10:45:29 GMT
       server:
       - uvicorn
       vary:
@@ -284,7 +287,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 78771ee4c48f046e9ae6e80c01bcedfd
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 204
       message: No Content

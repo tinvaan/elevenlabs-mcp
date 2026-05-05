@@ -141,14 +141,13 @@ def test_get_tool(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
     tool_id: str | None = None
     with vcr.use_cassette(str(cassette)):
         try:
-            config = {
+            fn = agents.create_client_tool if kind == "client" else agents.create_webhook_tool
+            created = fn(config={
                 "name": f"integration-get-tool-{kind}",
                 "description": f"Integration test tool for get_tool {kind}",
                 **({"url": "https://example.com/tool-get"} if kind == "webhook" else {}),
                 **({"method": "GET"} if kind == "webhook" else {})
-            }
-            fn = agents.create_client_tool if kind == "client" else agents.create_webhook_tool
-            created = fn(config=config)
+            })
             tool_id = _extract_id(r"Tool ID: (\S+)", created.text)
 
             response = agents.get_tool(tool_id=tool_id)

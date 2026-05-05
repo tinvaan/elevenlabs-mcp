@@ -27,8 +27,9 @@ interactions:
     uri: https://api.elevenlabs.io/v1/convai/tools
   response:
     body:
-      string: '{"id":"tool_0201kqvafj8hfg18g211ffqpg8rg","tool_config":{"type":"client","name":"integration-get-tool-client","description":"Integration
-        test tool for get_tool client","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","parameters":null,"expects_response":false,"dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate"},"access_info":{"is_creator":true,"creator_name":"harishnavnit@gmail.com","creator_email":"harishnavnit@gmail.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
+      string: '{"id":"tool_0001test_tool","tool_config":{"type":"client","name":"integration-get-tool-client","description":"Integration
+        test tool for get_tool client","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","parameters":null,"expects_response":false,"dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate"},"access_info":{"is_creator":true,"creator_name":"Test
+        User","creator_email":"test@example.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -49,7 +50,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 05:41:24 GMT
+      - Tue, 05 May 2026 10:45:24 GMT
       server:
       - uvicorn
       vary:
@@ -57,7 +58,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 6e765e2a09a81446bbb9c6607db4a149
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
@@ -81,11 +82,12 @@ interactions:
       X-Fern-SDK-Version:
       - 2.45.0
     method: GET
-    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0201kqvafj8hfg18g211ffqpg8rg
+    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0001test_tool
   response:
     body:
-      string: '{"id":"tool_0201kqvafj8hfg18g211ffqpg8rg","tool_config":{"type":"client","name":"integration-get-tool-client","description":"Integration
-        test tool for get_tool client","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","parameters":null,"expects_response":false,"dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate"},"access_info":{"is_creator":true,"creator_name":"harishnavnit@gmail.com","creator_email":"harishnavnit@gmail.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
+      string: '{"id":"tool_0001test_tool","tool_config":{"type":"client","name":"integration-get-tool-client","description":"Integration
+        test tool for get_tool client","response_timeout_secs":20,"disable_interruptions":false,"force_pre_tool_speech":false,"pre_tool_speech":"auto","assignments":[],"tool_call_sound":null,"tool_call_sound_behavior":"auto","tool_error_handling_mode":"auto","parameters":null,"expects_response":false,"dynamic_variables":{"dynamic_variable_placeholders":{}},"execution_mode":"immediate"},"access_info":{"is_creator":true,"creator_name":"Test
+        User","creator_email":"test@example.com","role":"admin","anonymous_access_level_override":null},"usage_stats":{"total_calls":0,"avg_latency_secs":0.0},"response_mocks":null}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000
@@ -106,7 +108,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 05:41:24 GMT
+      - Tue, 05 May 2026 10:45:23 GMT
       server:
       - uvicorn
       vary:
@@ -114,7 +116,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 7b1dd0f3c8406859e2624bbfb7344d2b
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
@@ -138,7 +140,7 @@ interactions:
       X-Fern-SDK-Version:
       - 2.45.0
     method: GET
-    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0201kqvafj8hfg18g211ffqpg8rg/dependent-agents
+    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0001test_tool/dependent-agents
   response:
     body:
       string: '{"agents":[],"branches":[],"next_cursor":null,"has_more":false}'
@@ -162,7 +164,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 05:41:24 GMT
+      - Tue, 05 May 2026 10:45:24 GMT
       server:
       - uvicorn
       vary:
@@ -170,7 +172,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - bb1ec7cbcee8b6a352b20e77e68f3300
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
@@ -194,7 +196,7 @@ interactions:
       X-Fern-SDK-Version:
       - 2.45.0
     method: DELETE
-    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0201kqvafj8hfg18g211ffqpg8rg
+    uri: https://api.elevenlabs.io/v1/convai/tools/tool_0001test_tool
   response:
     body:
       string: ''
@@ -214,7 +216,7 @@ interactions:
       access-control-max-age:
       - '600'
       date:
-      - Tue, 05 May 2026 05:41:25 GMT
+      - Tue, 05 May 2026 10:45:25 GMT
       server:
       - uvicorn
       vary:
@@ -222,7 +224,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 559c268668842bdcd1fa03204d18f8f4
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 204
       message: No Content

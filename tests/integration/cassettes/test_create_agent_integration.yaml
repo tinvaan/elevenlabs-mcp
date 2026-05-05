@@ -33,7 +33,7 @@ interactions:
     uri: https://api.elevenlabs.io/v1/convai/agents/create
   response:
     body:
-      string: '{"agent_id":"agent_2601kqv6bsjpessaaket2ypvm0rh","main_branch_id":null,"initial_version_id":null}'
+      string: '{"agent_id":"agent_3601kqvvw3hefmrad87e41s5ga06","main_branch_id":null,"initial_version_id":null}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000
@@ -54,7 +54,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 04:29:25 GMT
+      - Tue, 05 May 2026 10:45:20 GMT
       server:
       - uvicorn
       vary:
@@ -62,7 +62,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 46a532b5525bf1cbecbf53748c8c1da6
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
       x-warning:
       - The LLM 'gemini-2.0-flash-001' has been deprecated by its provider and has
         been replaced by 'gemini-2.5-flash'.
@@ -89,13 +89,13 @@ interactions:
       X-Fern-SDK-Version:
       - 2.45.0
     method: DELETE
-    uri: https://api.elevenlabs.io/v1/convai/agents/agent_2601kqv6bsjpessaaket2ypvm0rh
+    uri: https://api.elevenlabs.io/v1/convai/agents/agent_3601kqvvw3hefmrad87e41s5ga06
   response:
     body:
       string: ''
     headers:
       Alt-Svc:
-      - h3=":443"; ma=2592000
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Strict-Transport-Security:
       - max-age=1800;
       Via:
@@ -109,7 +109,7 @@ interactions:
       access-control-max-age:
       - '600'
       date:
-      - Tue, 05 May 2026 04:29:27 GMT
+      - Tue, 05 May 2026 10:45:22 GMT
       server:
       - uvicorn
       vary:
@@ -117,7 +117,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 0dbf365eef9e054249022564a1ac766a
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 204
       message: No Content

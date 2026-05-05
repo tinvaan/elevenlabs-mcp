@@ -25,7 +25,7 @@ interactions:
       string: '{"tools":[],"next_cursor":null,"has_more":false}'
     headers:
       Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      - h3=":443"; ma=2592000
       Content-Length:
       - '48'
       Strict-Transport-Security:
@@ -43,7 +43,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 05 May 2026 01:58:36 GMT
+      - Tue, 05 May 2026 10:45:23 GMT
       server:
       - uvicorn
       vary:
@@ -51,7 +51,7 @@ interactions:
       x-region:
       - us-central1
       x-trace-id:
-      - 4820bb3e332cbe519f7b6ea5cfa5e5a8
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     status:
       code: 200
       message: OK
