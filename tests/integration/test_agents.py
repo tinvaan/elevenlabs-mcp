@@ -23,14 +23,15 @@ def _extract_id(pattern: str, text: str) -> str:
     ids=["text", "url", "file"],
 )
 def test_add_knowledge_base_to_agent(
-    ctx: tuple[str, Any],
+    env: tuple[str, str],
+    agents: Any,
     vcr: Any,
     tmp_path: Path,
     kind: str,
     casette: str,
 ):
     """Create and attach a knowledge base document for each supported input type."""
-    target, agents = ctx
+    _, target = env
     knowledge_base_id: str | None = None
     payload: dict[str, str] = {
         "knowledge_base_name": f"integration-kb-{kind}",
@@ -64,9 +65,8 @@ def test_add_knowledge_base_to_agent(
                 )
 
 
-def test_create_agent(ctx: tuple[str, Any], vcr: Any):
+def test_create_agent(agents: Any, vcr: Any):
     """Create a dedicated integration-test agent and delete it after assertion."""
-    _, agents = ctx
     created_agent_id: str | None = None
     cassette = Path(__file__).parent / "cassettes" / "test_create_agent_integration.yaml"
 
@@ -88,9 +88,8 @@ def test_create_agent(ctx: tuple[str, Any], vcr: Any):
                 agents.client.conversational_ai.agents.delete(agent_id=created_agent_id)
 
 
-def test_list_agents(ctx: tuple[str, Any], vcr: Any):
+def test_list_agents(agents: Any, vcr: Any):
     """List available agents in the workspace."""
-    _, agents = ctx
     cassette = Path(__file__).parent / "cassettes" / "test_list_agents_integration.yaml"
 
     with vcr.use_cassette(str(cassette)):
@@ -100,9 +99,9 @@ def test_list_agents(ctx: tuple[str, Any], vcr: Any):
     assert "Available agents:" in response.text
 
 
-def test_get_agent(ctx: tuple[str, Any], vcr: Any):
+def test_get_agent(env: tuple[str, str], agents: Any, vcr: Any):
     """Get details for the target test agent."""
-    target, agents = ctx
+    _, target = env
     cassette = Path(__file__).parent / "cassettes" / "test_get_agent_integration.yaml"
 
     with vcr.use_cassette(str(cassette)):
@@ -113,9 +112,8 @@ def test_get_agent(ctx: tuple[str, Any], vcr: Any):
     assert f"Agent ID: {target}" in response.text
 
 
-def test_list_workspace_tools(ctx: tuple[str, Any], vcr: Any):
+def test_list_workspace_tools(agents: Any, vcr: Any):
     """List all workspace tools."""
-    _, agents = ctx
     cassette = Path(__file__).parent / "cassettes" / "test_list_workspace_tools_integration.yaml"
 
     with vcr.use_cassette(str(cassette)):
@@ -133,9 +131,8 @@ def test_list_workspace_tools(ctx: tuple[str, Any], vcr: Any):
     ],
     ids=["client", "webhook"],
 )
-def test_get_tool(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
+def test_get_tool(agents: Any, vcr: Any, kind: str, casette: str):
     """Create and fetch details for each supported tool type."""
-    _, agents = ctx
     cassette = Path(__file__).parent / "cassettes" / casette
 
     tool_id: str | None = None
@@ -171,9 +168,8 @@ def test_get_tool(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
     ],
     ids=["webhook", "client"],
 )
-def test_create_tool(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
+def test_create_tool(agents: Any, vcr: Any, kind: str, casette: str):
     """Create each supported workspace tool type."""
-    _, agents = ctx
     cassette = Path(__file__).parent / "cassettes" / casette
     tool_id: str | None = None
 
@@ -203,9 +199,8 @@ def test_create_tool(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
     ],
     ids=["webhook", "client"],
 )
-def test_update_tool(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
+def test_update_tool(agents: Any, vcr: Any, kind: str, casette: str):
     """Update each supported workspace tool type."""
-    _, agents = ctx
     cassette = Path(__file__).parent / "cassettes" / casette
     tool_id: str | None = None
 
@@ -240,9 +235,11 @@ def test_update_tool(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
 
 @pytest.mark.parametrize("scenario", ["regular", "attached"], ids=["regular", "attached"])
 @pytest.mark.parametrize("kind", ["client", "webhook"], ids=["client", "webhook"])
-def test_delete_tool(ctx: tuple[str, Any], vcr: Any, scenario: str, kind: str):
+def test_delete_tool(
+    env: tuple[str, str], agents: Any, vcr: Any, scenario: str, kind: str
+):
     """Delete tools normally and when they are attached to an agent."""
-    target, agents = ctx
+    _, target = env
     tool_id: str | None = None
     removed, deleted = False, False
     cassette = Path(__file__).parent / "cassettes" / (
@@ -292,9 +289,11 @@ def test_delete_tool(ctx: tuple[str, Any], vcr: Any, scenario: str, kind: str):
     ],
     ids=["client", "webhook"],
 )
-def test_add_tool_to_agent(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
+def test_add_tool_to_agent(
+    env: tuple[str, str], agents: Any, vcr: Any, kind: str, casette: str
+):
     """Create a tool and attach it to the test agent."""
-    target, agents = ctx
+    _, target = env
     attached = False
     tool_id: str | None = None
     cassette = Path(__file__).parent / "cassettes" / casette
@@ -329,9 +328,11 @@ def test_add_tool_to_agent(ctx: tuple[str, Any], vcr: Any, kind: str, casette: s
     ],
     ids=["client", "webhook"],
 )
-def test_remove_tool_from_agent(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
+def test_remove_tool_from_agent(
+    env: tuple[str, str], agents: Any, vcr: Any, kind: str, casette: str
+):
     """Create a tool, attach it, then remove it from the test agent."""
-    target, agents = ctx
+    _, target = env
     removed = False
     tool_id: str | None = None
     cassette = Path(__file__).parent / "cassettes" / casette
@@ -367,9 +368,11 @@ def test_remove_tool_from_agent(ctx: tuple[str, Any], vcr: Any, kind: str, caset
     ],
     ids=["client", "webhook"],
 )
-def test_get_tool_dependent_agents(ctx: tuple[str, Any], vcr: Any, kind: str, casette: str):
+def test_get_tool_dependent_agents(
+    env: tuple[str, str], agents: Any, vcr: Any, kind: str, casette: str
+):
     """List dependent agents for each supported attached tool type."""
-    target, agents = ctx
+    _, target = env
     tool_id: str | None = None
     cassette = Path(__file__).parent / "cassettes" / casette
 
