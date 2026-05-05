@@ -1,0 +1,124 @@
+interactions:
+- request:
+    body: '{"conversation_config":{"agent":{"language":"en","prompt":{"prompt":"You
+      are an integration test agent.","llm":"gemini-2.0-flash-001","tools":[{"type":"system","name":"end_call","description":""}],"knowledge_base":[],"temperature":0.5},"first_message":"Hi,
+      this is an integration test agent.","dynamic_variables":{"dynamic_variable_placeholders":{}}},"asr":{"quality":"high","provider":"elevenlabs","user_input_audio_format":"pcm_16000","keywords":[]},"tts":{"voice_id":"cgSgspJ2msm6clMCkdW9","model_id":"eleven_turbo_v2","agent_output_audio_format":"pcm_16000","optimize_streaming_latency":3,"stability":0.5,"similarity_boost":0.8},"turn":{"turn_timeout":7},"conversation":{"max_duration_seconds":300,"client_events":["audio","interruption","user_transcript","agent_response","agent_response_correction"]},"language_presets":{},"is_blocked_ivc":false,"is_blocked_non_ivc":false},"platform_settings":{"widget":{"variant":"full","avatar":{"type":"orb","color_1":"#6DB035","color_2":"#F5CABB"},"feedback_mode":"during","terms_text":"####
+      Terms and conditions\n\nBy clicking \"Agree,\" and each time I interact with
+      this AI agent, I consent to the recording, storage, and sharing of my communications
+      with third-party service providers, and as described in the Privacy Policy.\nIf
+      you do not wish to have your conversations recorded, please refrain from using
+      this service.","show_avatar_when_collapsed":true},"evaluation":{},"auth":{"allowlist":[]},"overrides":{},"call_limits":{"agent_concurrency_limit":-1,"daily_limit":100000},"privacy":{"record_voice":true,"retention_days":730,"delete_transcript_and_pii":true,"delete_audio":true,"apply_to_existing_conversations":false},"data_collection":{}},"name":"integration-test-agent"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1728'
+      Host:
+      - api.elevenlabs.io
+      User-Agent:
+      - elevenlabs/2.45.0
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - elevenlabs
+      X-Fern-SDK-Version:
+      - 2.45.0
+      content-type:
+      - application/json
+    method: POST
+    uri: https://api.elevenlabs.io/v1/convai/agents/create
+  response:
+    body:
+      string: '{"agent_id":"agent_2601kqv6bsjpessaaket2ypvm0rh","main_branch_id":null,"initial_version_id":null}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '97'
+      Strict-Transport-Security:
+      - max-age=1800;
+      Via:
+      - 1.1 google
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - POST, PATCH, OPTIONS, DELETE, GET, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '600'
+      content-type:
+      - application/json
+      date:
+      - Tue, 05 May 2026 04:29:25 GMT
+      server:
+      - uvicorn
+      vary:
+      - Accept-Language
+      x-region:
+      - us-central1
+      x-trace-id:
+      - 46a532b5525bf1cbecbf53748c8c1da6
+      x-warning:
+      - The LLM 'gemini-2.0-flash-001' has been deprecated by its provider and has
+        been replaced by 'gemini-2.5-flash'.
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Host:
+      - api.elevenlabs.io
+      User-Agent:
+      - elevenlabs/2.45.0
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - elevenlabs
+      X-Fern-SDK-Version:
+      - 2.45.0
+    method: DELETE
+    uri: https://api.elevenlabs.io/v1/convai/agents/agent_2601kqv6bsjpessaaket2ypvm0rh
+  response:
+    body:
+      string: ''
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Strict-Transport-Security:
+      - max-age=1800;
+      Via:
+      - 1.1 google
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - POST, PATCH, OPTIONS, DELETE, GET, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '600'
+      date:
+      - Tue, 05 May 2026 04:29:27 GMT
+      server:
+      - uvicorn
+      vary:
+      - Accept-Language
+      x-region:
+      - us-central1
+      x-trace-id:
+      - 0dbf365eef9e054249022564a1ac766a
+    status:
+      code: 204
+      message: No Content
+version: 1

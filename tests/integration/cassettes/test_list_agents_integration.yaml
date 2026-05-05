@@ -1,0 +1,59 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Host:
+      - api.elevenlabs.io
+      User-Agent:
+      - elevenlabs/2.45.0
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - elevenlabs
+      X-Fern-SDK-Version:
+      - 2.45.0
+    method: GET
+    uri: https://api.elevenlabs.io/v1/convai/agents
+  response:
+    body:
+      string: '{"agents":[{"agent_id":"agent_4501khdqt1t5epnajsmvpnzcyxg4","name":"Agents
+        v3 Demo","tags":["demo","v3","customer-support"],"created_at_unix_secs":1771061446,"access_info":{"is_creator":false,"creator_name":"ElevenLabs","creator_email":"agents@elevenlabs.io","role":"admin","anonymous_access_level_override":null},"last_call_time_unix_secs":null,"archived":false,"last_7_day_call_count":0,"has_coaching":false,"trust_context":"unknown"},{"agent_id":"agent_01jyvgf13se90b0472dj2hn96a","name":"F-MoCA","tags":[],"created_at_unix_secs":1751122413,"access_info":{"is_creator":true,"creator_name":"harishnavnit@gmail.com","creator_email":"harishnavnit@gmail.com","role":"admin","anonymous_access_level_override":null},"last_call_time_unix_secs":1777805629,"archived":false,"last_7_day_call_count":6,"has_coaching":false,"trust_context":"unknown"},{"agent_id":"agent_01jyrftf88ea08nx5gcg9j1whq","name":"T-MoCA","tags":[],"created_at_unix_secs":1751021076,"access_info":{"is_creator":true,"creator_name":"harishnavnit@gmail.com","creator_email":"harishnavnit@gmail.com","role":"admin","anonymous_access_level_override":null},"last_call_time_unix_secs":1764952471,"archived":false,"last_7_day_call_count":0,"has_coaching":false,"trust_context":"unknown"}],"next_cursor":null,"has_more":false}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1284'
+      Strict-Transport-Security:
+      - max-age=1800;
+      Via:
+      - 1.1 google
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - POST, PATCH, OPTIONS, DELETE, GET, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '600'
+      content-type:
+      - application/json
+      date:
+      - Tue, 05 May 2026 01:58:35 GMT
+      server:
+      - uvicorn
+      vary:
+      - Accept-Language
+      x-region:
+      - us-central1
+      x-trace-id:
+      - 44bda8c0079fafb73e6320a7054e91c7
+    status:
+      code: 200
+      message: OK
+version: 1
