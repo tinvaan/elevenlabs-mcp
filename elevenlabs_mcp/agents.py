@@ -252,7 +252,7 @@ def add_knowledge_base_to_agent(
     agent = client.conversational_ai.agents.get(agent_id=agent_id)
     agent_config = agent.conversation_config.agent
     knowledge_base_list = (
-        agent_config.get("prompt", {}).get("knowledge_base", []) if agent_config else []
+        getattr(agent_config.prompt, "knowledge_base", []) if agent_config else []
     )
     knowledge_base_list.append(
         KnowledgeBaseLocator(
@@ -262,10 +262,15 @@ def add_knowledge_base_to_agent(
         )
     )
 
-    if agent_config and "prompt" not in agent_config:
-        agent_config["prompt"] = {}
     if agent_config:
-        agent_config["prompt"]["knowledge_base"] = knowledge_base_list
+        if not getattr(agent_config, "prompt", False):
+            agent_config = agent_config.model_copy(update={"prompt": {}})
+
+        prompt = agent_config.prompt
+        prompt = prompt.model_copy(update={
+            "knowledge_base": knowledge_base_list
+        })
+        agent_config = agent_config.model_copy(update={"prompt": prompt})
 
     client.conversational_ai.agents.update(
         agent_id=agent_id, conversation_config=agent.conversation_config
@@ -360,7 +365,8 @@ def list_workspace_tools() -> TextContent:
 def get_tool(tool_id: str) -> TextContent:
     tool = client.conversational_ai.tools.get(tool_id=tool_id)
     config = tool.tool_config
-    schema = getattr(config, "api_schema")
+    schema = getattr(config, "api_schema", None)
+    is_webhook = getattr(config, "type", "unknown") == "webhook"
 
     details = [
         f"Tool ID: {tool.id}",
@@ -371,13 +377,13 @@ def get_tool(tool_id: str) -> TextContent:
     if desc := getattr(config, "description", None):
         details.append(f"Description: {desc}")
 
-    if getattr(config, "type", "unknown") == "webhook" and schema:
+    if timeout := getattr(config, "response_timeout_secs", None):
+        details.append(f"Response Timeout: {timeout}s")
+
+    if is_webhook and schema:
         details.append(f"URL: {getattr(schema, 'url', '')}")
         if method := getattr(schema, "method", None):
             details.append(f"Method: {method}")
-
-    if timeout := getattr(config, "response_timeout_secs", None):
-        details.append(f"Response Timeout: {timeout}s")
 
     return TextContent(type="text", text="\n".join(details))
 
