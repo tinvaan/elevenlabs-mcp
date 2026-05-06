@@ -1,0 +1,67 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Host:
+      - api.elevenlabs.io
+      User-Agent:
+      - elevenlabs/2.45.0
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - elevenlabs
+      X-Fern-SDK-Version:
+      - 2.45.0
+    method: GET
+    uri: https://api.elevenlabs.io/v2/voices?search=adam&sort=name&sort_direction=asc
+  response:
+    body:
+      string: '{"voices":[{"voice_id":"IRHApOXLvnW57QJPQH2P","name":"Adam - Brooding,
+        Dark, Tough American","samples":null,"category":"professional","fine_tuning":{"is_allowed_to_fine_tune":true,"state":{"eleven_turbo_v2_5":"fine_tuned","eleven_flash_v2":"fine_tuned","eleven_multilingual_v2":"fine_tuned","eleven_multilingual_sts_v2":"fine_tuned","eleven_v2_5_flash":"fine_tuned","eleven_v2_flash":"fine_tuned","eleven_turbo_v2":"fine_tuned","eleven_flash_v2_5":"fine_tuned"},"verification_failures":[],"verification_attempts_count":0,"manual_verification_requested":false,"language":"en","progress":{},"message":{"eleven_turbo_v2_5":"","eleven_flash_v2":"","eleven_multilingual_v2":"","eleven_multilingual_sts_v2":"","eleven_v2_5_flash":"","eleven_v2_flash":"","eleven_turbo_v2":"","eleven_flash_v2_5":""},"dataset_duration_seconds":null,"verification_attempts":null,"slice_ids":null,"manual_verification":null,"max_verification_attempts":0,"next_max_verification_attempts_reset_unix_ms":0},"labels":{"use_case":"characters_animation","gender":"male","accent":"american","age":"middle_aged","language":"en","descriptive":"intense"},"description":"Adam
+        - Brooding, Dark, Tough American - A tough hero, weathered by years of experience.
+        American accent.","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/IRHApOXLvnW57QJPQH2P/7758822f-c98c-4db9-ab0a-186b6a13be1a.mp3","available_for_tiers":[],"settings":null,"sharing":{"status":"copied","history_item_sample_id":null,"date_unix":1777651381,"whitelisted_emails":[],"public_owner_id":"7f002cc08b25f133975f64e7400e04182de633b1fc447e277e57871888ffead6","original_voice_id":"IRHApOXLvnW57QJPQH2P","financial_rewards_enabled":false,"free_users_allowed":true,"live_moderation_enabled":false,"rate":1.0,"fiat_rate":null,"notice_period":730,"disable_at_unix":null,"voice_mixing_allowed":false,"featured":false,"category":"high_quality","reader_app_enabled":true,"image_url":"","ban_reason":null,"liked_by_count":0,"cloned_by_count":0,"name":"Adam
+        - American, Dark and Tough","description":"Adam - Brooding, Dark, Tough American
+        - A tough hero, weathered by years of experience. American accent.","labels":{"use_case":"characters_animation","gender":"male","descriptive":"intense","age":"middle_aged","language":"en","accent":"american","locale":"en-US"},"review_status":"not_requested","review_message":null,"enabled_in_library":false,"instagram_username":null,"twitter_username":null,"youtube_username":null,"tiktok_username":null,"moderation_check":null,"reader_restricted_on":null},"high_quality_base_model_ids":["eleven_multilingual_v2","eleven_turbo_v2_5","eleven_v2_5_flash","eleven_flash_v2_5","eleven_multilingual_sts_v2","eleven_turbo_v2","eleven_v2_flash","eleven_flash_v2"],"verified_languages":[{"language":"en","model_id":"eleven_multilingual_v2","accent":null,"locale":"en-US","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/64711083-e9b9-448c-b284-f1e20eb5e44a.mp3"},{"language":"pl","model_id":"eleven_multilingual_v2","accent":"standard","locale":"pl-PL","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/5218355d-ac82-4059-b824-f7758a560322.mp3"},{"language":"es","model_id":"eleven_multilingual_v2","accent":"mexican","locale":"es-MX","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/708a9629-8eae-4a88-97af-d6ff968e01f9.mp3"},{"language":"pt","model_id":"eleven_multilingual_v2","accent":"brazilian","locale":"pt-BR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/304e6b14-7e51-4131-aeb9-d41afc9bc377.mp3"},{"language":"de","model_id":"eleven_multilingual_v2","accent":"standard","locale":"de-DE","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/d3f981eb-d367-40c6-a210-214591449a0b.mp3"},{"language":"hi","model_id":"eleven_multilingual_v2","accent":"standard","locale":"hi-IN","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/92f9b653-44f8-4875-bd10-4323ace19819.mp3"},{"language":"ru","model_id":"eleven_multilingual_v2","accent":"standard","locale":"ru-RU","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/ea0b2360-9c86-4e88-9482-559f603a8abc.mp3"},{"language":"hu","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"hu-HU","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/57eb5282-6e97-4283-847b-1c3aec29deae.mp3"},{"language":"hr","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"hr-HR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/182df749-f881-4c0c-a7af-3b6d42b7537b.mp3"},{"language":"nl","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"nl-NL","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/542ce56d-024d-4396-b5d5-4ca6e95f7f44.mp3"},{"language":"id","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"id-ID","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/9737eecb-8b9c-4e2d-b215-536be07b4c67.mp3"},{"language":"pt","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"pt-BR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/4cd44146-319f-4ca8-8a70-64d002dee027.mp3"},{"language":"sv","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"sv-SE","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/849fc6ab-65c0-424d-a578-c1561c5b7037.mp3"},{"language":"sk","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"sk-SK","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/b6cee7dc-f496-4332-ab46-d858c9339bd7.mp3"},{"language":"en","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"en-US","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/5218df87-f6e7-4a1f-84f2-7f9a2e736b27.mp3"},{"language":"pl","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"pl-PL","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/1a6d4b2a-60ef-4603-990d-f3a83ad56a6f.mp3"},{"language":"de","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"de-DE","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/6d4ea458-978d-434b-a079-b8beb522fbc9.mp3"},{"language":"it","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"it-IT","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/0693a58e-1940-4036-9eec-33833c595368.mp3"},{"language":"da","model_id":"eleven_turbo_v2_5","accent":"standard","locale":"da-DK","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/user/4GWg0UwQKXbiVFO0Trl4jMDSTb82/voices/IRHApOXLvnW57QJPQH2P/7e91717c-8a2c-45eb-a6eb-927854c2086e.mp3"}],"collection_ids":[],"safety_control":null,"voice_verification":{"requires_verification":false,"is_verified":false,"verification_failures":[],"verification_attempts_count":0,"language":null,"verification_attempts":null},"permission_on_resource":"admin","is_owner":false,"is_legacy":false,"is_mixed":false,"favorited_at_unix":null,"created_at_unix":1777651381,"is_bookmarked":true,"recording_quality":null,"labelling_status":null,"recording_quality_reason":null},{"voice_id":"pNInz6obpgDQGcFmaJgB","name":"Adam
+        - Dominant, Firm","samples":null,"category":"premade","fine_tuning":{"is_allowed_to_fine_tune":false,"state":{},"verification_failures":[],"verification_attempts_count":0,"manual_verification_requested":false,"language":null,"progress":{},"message":{},"dataset_duration_seconds":null,"verification_attempts":null,"slice_ids":null,"manual_verification":null,"max_verification_attempts":null,"next_max_verification_attempts_reset_unix_ms":null},"labels":{"use_case":"social_media","gender":"male","accent":"american","age":"middle_aged","language":"en"},"description":"A
+        bright tenor pitch that immediately cuts through. The delivery is brash and
+        openly confident, speaking with unwavering certainty and a slightly aggressive
+        self-assurance.","preview_url":"https://storage.googleapis.com/eleven-public-prod/premade/voices/pNInz6obpgDQGcFmaJgB/d6905d7a-dd26-4187-bfff-1bd3a5ea7cac.mp3","available_for_tiers":[],"settings":null,"sharing":null,"high_quality_base_model_ids":[],"verified_languages":[],"collection_ids":[],"safety_control":null,"voice_verification":{"requires_verification":false,"is_verified":false,"verification_failures":[],"verification_attempts_count":0,"language":null,"verification_attempts":null},"permission_on_resource":null,"is_owner":false,"is_legacy":false,"is_mixed":false,"favorited_at_unix":null,"created_at_unix":null,"is_bookmarked":null,"recording_quality":null,"labelling_status":null,"recording_quality_reason":null}],"has_more":false,"total_count":2,"next_page_token":null}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '9869'
+      Strict-Transport-Security:
+      - max-age=1800;
+      Via:
+      - 1.1 google
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - POST, PATCH, OPTIONS, DELETE, GET, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '600'
+      content-type:
+      - application/json
+      date:
+      - Tue, 05 May 2026 15:12:05 GMT
+      server:
+      - uvicorn
+      vary:
+      - Accept-Language
+      x-region:
+      - us-central1
+      x-trace-id:
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    status:
+      code: 200
+      message: OK
+version: 1

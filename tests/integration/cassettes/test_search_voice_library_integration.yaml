@@ -1,0 +1,68 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Host:
+      - api.elevenlabs.io
+      User-Agent:
+      - elevenlabs/2.45.0
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - elevenlabs
+      X-Fern-SDK-Version:
+      - 2.45.0
+    method: GET
+    uri: https://api.elevenlabs.io/v1/shared-voices?page_size=3&search=english&page=0
+  response:
+    body:
+      string: '{"voices":[{"public_owner_id":"507d3fdde2831565ce9a36a4e16279d583d6f936ba127ca5c522c019ad5a1baf","voice_id":"BVsq7dMRQW9XpXw9o5Rq","date_unix":1777665376,"name":"Emma
+        (English) - Multilingual, Clarity, Confidence, Neutral","accent":"american","gender":"female","age":"middle_aged","descriptive":"confident","use_case":"narrative_story","category":"professional","language":"en","locale":"en-US","description":"A
+        clear, confident female voice with a neutral accent and professional tone.
+        Smooth and easy to follow, ideal for business content, explainers, and everyday
+        communication, with consistent delivery across multiple languages.","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/BVsq7dMRQW9XpXw9o5Rq/f98c2b9a-11e0-466d-a6cb-6a41ae4d8198.mp3","usage_character_count_1y":60331,"usage_character_count_7d":60331,"play_api_usage_character_count_1y":0,"cloned_by_count":120,"rate":1.0,"fiat_rate":null,"free_users_allowed":true,"live_moderation_enabled":true,"featured":false,"verified_languages":[{"language":"en","model_id":"eleven_multilingual_v2","accent":"american","locale":"en-US","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/BVsq7dMRQW9XpXw9o5Rq/f98c2b9a-11e0-466d-a6cb-6a41ae4d8198.mp3"},{"language":"en","model_id":"eleven_turbo_v2_5","accent":"american","locale":"en-US","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/BVsq7dMRQW9XpXw9o5Rq/f98c2b9a-11e0-466d-a6cb-6a41ae4d8198.mp3"},{"language":"en","model_id":"eleven_v2_5_flash","accent":"american","locale":"en-US","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/BVsq7dMRQW9XpXw9o5Rq/f98c2b9a-11e0-466d-a6cb-6a41ae4d8198.mp3"},{"language":"en","model_id":"eleven_flash_v2_5","accent":"american","locale":"en-US","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/BVsq7dMRQW9XpXw9o5Rq/f98c2b9a-11e0-466d-a6cb-6a41ae4d8198.mp3"},{"language":"en","model_id":"eleven_turbo_v2","accent":"american","locale":"en-US","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/BVsq7dMRQW9XpXw9o5Rq/f98c2b9a-11e0-466d-a6cb-6a41ae4d8198.mp3"},{"language":"en","model_id":"eleven_v2_flash","accent":"american","locale":"en-US","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/BVsq7dMRQW9XpXw9o5Rq/f98c2b9a-11e0-466d-a6cb-6a41ae4d8198.mp3"},{"language":"en","model_id":"eleven_flash_v2","accent":"american","locale":"en-US","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/BVsq7dMRQW9XpXw9o5Rq/f98c2b9a-11e0-466d-a6cb-6a41ae4d8198.mp3"}],"notice_period":730,"instagram_username":null,"twitter_username":null,"youtube_username":null,"tiktok_username":null,"image_url":"","is_added_by_user":false,"is_bookmarked":null},{"public_owner_id":"533f956cf2444e80b69c8f48cd7ba487892379c6754f9019db544a3e1fffae74","voice_id":"5J8HNhWkTAhN2YWsd9Ta","date_unix":1775858481,"name":"Dev
+        - English Speaking Korean Male Streamer","accent":"korean","gender":"male","age":"young","descriptive":"cute","use_case":"characters_animation","category":"professional","language":"en","locale":"en-KR","description":"A
+        friendly, cute, and youthful voice with an energetic and wholesome tone. Soft
+        and playful in delivery, with a light, funny charm that feels warm and approachable.","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/5J8HNhWkTAhN2YWsd9Ta/78498d08-b4ba-4982-9cdd-9aa28e70830e.mp3","usage_character_count_1y":362239,"usage_character_count_7d":113203,"play_api_usage_character_count_1y":0,"cloned_by_count":755,"rate":1.0,"fiat_rate":null,"free_users_allowed":true,"live_moderation_enabled":false,"featured":false,"verified_languages":[{"language":"en","model_id":"eleven_multilingual_v2","accent":"korean","locale":"en-KR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/5J8HNhWkTAhN2YWsd9Ta/78498d08-b4ba-4982-9cdd-9aa28e70830e.mp3"},{"language":"en","model_id":"eleven_turbo_v2","accent":"korean","locale":"en-KR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/5J8HNhWkTAhN2YWsd9Ta/78498d08-b4ba-4982-9cdd-9aa28e70830e.mp3"},{"language":"en","model_id":"eleven_v2_flash","accent":"korean","locale":"en-KR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/5J8HNhWkTAhN2YWsd9Ta/78498d08-b4ba-4982-9cdd-9aa28e70830e.mp3"},{"language":"en","model_id":"eleven_flash_v2","accent":"korean","locale":"en-KR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/5J8HNhWkTAhN2YWsd9Ta/78498d08-b4ba-4982-9cdd-9aa28e70830e.mp3"},{"language":"en","model_id":"eleven_turbo_v2_5","accent":"korean","locale":"en-KR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/5J8HNhWkTAhN2YWsd9Ta/78498d08-b4ba-4982-9cdd-9aa28e70830e.mp3"},{"language":"en","model_id":"eleven_v2_5_flash","accent":"korean","locale":"en-KR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/5J8HNhWkTAhN2YWsd9Ta/78498d08-b4ba-4982-9cdd-9aa28e70830e.mp3"},{"language":"en","model_id":"eleven_flash_v2_5","accent":"korean","locale":"en-KR","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/5J8HNhWkTAhN2YWsd9Ta/78498d08-b4ba-4982-9cdd-9aa28e70830e.mp3"}],"notice_period":730,"instagram_username":null,"twitter_username":null,"youtube_username":null,"tiktok_username":null,"image_url":"","is_added_by_user":false,"is_bookmarked":null},{"public_owner_id":"66d1e96b6d7300c4a7b736100dc4fe0f3b52cf3bdeca6bdf18fe50b1a75a254d","voice_id":"FetVdiLdMbZ8sRe0L0QX","date_unix":1775661855,"name":"Asa
+        - Calm, Narrative, RP English","accent":"british","gender":"male","age":"young","descriptive":"relaxed","use_case":"informative_educational","category":"professional","language":"en","locale":"en-GB","description":"A
+        young and easy to understand male British English voice. Clear pronunciation
+        with a calm and relaxed flow.","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/FetVdiLdMbZ8sRe0L0QX/DANWr5qh0xCJR5eswJnT.mp3","usage_character_count_1y":446505,"usage_character_count_7d":80830,"play_api_usage_character_count_1y":0,"cloned_by_count":625,"rate":1.0,"fiat_rate":null,"free_users_allowed":true,"live_moderation_enabled":false,"featured":false,"verified_languages":[{"language":"en","model_id":"eleven_multilingual_v2","accent":"british","locale":"en-GB","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/FetVdiLdMbZ8sRe0L0QX/DANWr5qh0xCJR5eswJnT.mp3"},{"language":"en","model_id":"eleven_turbo_v2_5","accent":"british","locale":"en-GB","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/FetVdiLdMbZ8sRe0L0QX/DANWr5qh0xCJR5eswJnT.mp3"},{"language":"en","model_id":"eleven_v2_5_flash","accent":"british","locale":"en-GB","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/FetVdiLdMbZ8sRe0L0QX/DANWr5qh0xCJR5eswJnT.mp3"},{"language":"en","model_id":"eleven_flash_v2_5","accent":"british","locale":"en-GB","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/FetVdiLdMbZ8sRe0L0QX/DANWr5qh0xCJR5eswJnT.mp3"},{"language":"en","model_id":"eleven_multilingual_sts_v2","accent":"british","locale":"en-GB","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/FetVdiLdMbZ8sRe0L0QX/DANWr5qh0xCJR5eswJnT.mp3"},{"language":"en","model_id":"eleven_turbo_v2","accent":"british","locale":"en-GB","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/FetVdiLdMbZ8sRe0L0QX/DANWr5qh0xCJR5eswJnT.mp3"},{"language":"en","model_id":"eleven_v2_flash","accent":"british","locale":"en-GB","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/FetVdiLdMbZ8sRe0L0QX/DANWr5qh0xCJR5eswJnT.mp3"},{"language":"en","model_id":"eleven_flash_v2","accent":"british","locale":"en-GB","preview_url":"https://storage.googleapis.com/eleven-public-prod/database/workspace/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/voices/FetVdiLdMbZ8sRe0L0QX/DANWr5qh0xCJR5eswJnT.mp3"}],"notice_period":730,"instagram_username":null,"twitter_username":null,"youtube_username":null,"tiktok_username":null,"image_url":"","is_added_by_user":false,"is_bookmarked":null}],"has_more":true,"total_count":6335,"last_sort_id":null}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '9412'
+      Strict-Transport-Security:
+      - max-age=1800;
+      Via:
+      - 1.1 google
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - POST, PATCH, OPTIONS, DELETE, GET, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '600'
+      content-type:
+      - application/json
+      date:
+      - Tue, 05 May 2026 11:02:32 GMT
+      server:
+      - uvicorn
+      vary:
+      - Accept-Language
+      x-region:
+      - us-central1
+      x-trace-id:
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    status:
+      code: 200
+      message: OK
+version: 1
