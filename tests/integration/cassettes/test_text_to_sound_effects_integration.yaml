@@ -1,0 +1,127 @@
+interactions:
+- request:
+    body: '{"text":"A short digital notification ping","loop":false,"duration_seconds":1.0}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '80'
+      Host:
+      - api.elevenlabs.io
+      User-Agent:
+      - elevenlabs/2.45.0
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - elevenlabs
+      X-Fern-SDK-Version:
+      - 2.45.0
+      content-type:
+      - application/json
+    method: POST
+    uri: https://api.elevenlabs.io/v1/sound-generation?output_format=mp3_44100_128
+  response:
+    body:
+      string: "ID3\x04\0\0\0\0\0#TSSE\0\0\0\x0F\0\0\x03Lavf60.16.100\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0Info\0\0\0\x0F\0\0\0(\0\0B\0\f\f\x12\x12\x18\x18\x18\x1F\x1F%%%++11188>>>DDJJJQQWWW]]cccjjpppvv|||\0\0\0\0Lavf\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0$\x05|\0\0\0\0\0\0Bw\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0d\0\0\x02*S%\0\06
+        \nz\0o\x11\x1F'-w\x04P\x02\0\0\0\0\x01\x10 A\b|\\.\e\x15\x11\x117\x17\x06(\x02\x1A\x03@h\r\fADqqqwDDDrwww{w{Aqs8
+        \b8&\x0F\x01b\b8!Cw\x1AI$E>\x04\x04\n\x02`>\x0F\tpp\x10\fH\x03>\x7F\f\x03~\\\x1F\a.\x7F
+        Q\x0Fm\"nYH.P\vq6\u04CEJ \uB40D\x1EQ\x17c&)P\rC\x03)@\x14!5&zec\u0328Di\x18G$\a\\%\x05s2G\x1426.I&Ih\e\x1AgMJHi\u07B5.\"'\x16f_8VK>k0[DWC\x05D\x18)\x03`\0\x18\x04\x04-7v`mp.>E#\x18N\u06AA6\"R\x02\x05kC0@M`\x1EU\e'rd\tA\"$%ZhD\t\x02J1\0_)Z\0\faau\x1EYbm|\nI\x15\x16RGQj$9:]1\x06cy8d<M\x18B\x12l\x1Dbe\x04Szt~UvE\x05L*\u0269\"VF@t\x1CM\x01F!Je.N\x16\x18
+        TI\x05\u0125D.r]u}?P\x14\u530F5!\u0650NEHo\b\x19nj\x16p\x150l;)\x014\x12oE\x7Fh!\x05,N<:\x11YN>/\u0228amn\u01CA4,?Q5|S\x01C\x0FKo393%pL\x18\u02C2O\x15!%B_LYC~\v\u065C\x19\\\x04\r]bS\x1E3{*\x19]$?+;y\x7F7D\u0268)\x10H{U\u02FC]H\0\x01\x18\x12t8Y\x0F3p\u15A8kD\r\x02V-@]\u028F=K']w\x01w\x7Fb4kaF)NT[\x0E?NT\u022DyAV[GLcg}\x1E_6[\0:V\v\tSJb\b%t8$FQ:=\x12\x04l7'N\u06DA\n6\td\u04C1TSs\x136HkQX:k7$dz\u0776S*>\f3\x18)POA\u05F8-H2X`\x0F\u07A58hG#A\"8\x03=\x18b<cU]N\x1Af43r\x17~\x1F/w\x10bg\x7Flj\x7FK>/l%_-\x11}T)10u\x06p\x13a'M\x1EivTQNH4&G\x01`Ow1`qM'D\tfGl=:\v\t8p+4\x11\0\x1EB\x05\uFBD2,I'b{\0\x7FE|\x05\0\0\b\0\bw\bvJz=oPC\x0Fd\x11\x04TWQi_\0<$%E>YCl%*p\vkH\u01CDvN[hW\u06B71Z/;)HwU\x11Eo[cN{\x12-\u063B>O$MbwQ*0\tD\b/Gu&\u0577SA+w,\x0E\x12:\x13;\x15\x05}\x1D\r0M\x18\e:)F\x06&u\v0\v\u013B7V\0/aR\x1D}!Gf0o\tsbP<;\x7F\"\u01A19s_Q,X\x1Ae39S[s<\x06\x1F0\"vG_[\x02'x\x18]{>q\v)5NU\x7Fj9^X%D\x17\fMj\u0579HP\05\x0F:D\x13z\x10_4&\u04737:V)\x7FIHu\u04B2\x05\x10\0\eR\x05z\u059E22AJh\x01Zw8V@Fp,d\x11\x04WPc+W1dO<6\x11'83\x1E\x12\x16\x1C0[0\t7E*\u072FX\u07A7[_\x7FkaM\x1F\x04WUIb\x1D\x05\x12\x15<}/\x7F\x0F=4$138R;5Ri\eUx\x03\0LJi9=\x1F=w[C
+        8 \x10\x04\t\x1E\x11\\!y*F;o$s?PR\x18wK\x7F\00b\x1EAv0\x04KG\\$V\x1D\f\x15IK(\x04Rv\x15,\u1196c,3n\x1Fs]\u03D9wV\x15E\x13\x0F}i9B\u05F5X\x0Ee\u02B9{Q\x19\x10\x7F4\\y\x0Ftvi,\u3290UvbS\x1F|\x13\rk$,q\0\x7Fj3Q@
+        -Rs\x13\u04F9Y\tG\x188Fk\u0428u_eEGr(\x020\0\01j&\x06Ci6\x18^jd\x0F\x02\x04.I{\x14f@5*\x7F\x05\x06\x0F+<\n%<*j\u0612
+        Kr\u072AF\x13j&\x7F@\"U`%'ym?iUkk78>D \rF%cTkMlH-\u0582>gQO%(\u04BB/X\u07ABH.gP0P\bl;\x04h\x10\v\0$$^\f
+        R\buv%}yIz\x10\x05PJ;\x114\x12MP\x1E[ \x0EAMexto\eE_B\x13Z]\fZuKs\v\u06B1\"0.xkyY\x1F\u03B5=i<p=?\x0FR\x06IX[O%0'\x11\x0Fm\nB\x03iyxGEP
+        \b\x17/\x03BbG\x04\n^\x17zD\u04AF\x7Fi\x15N&\aHI\a?~\0%}n!i|v1\x057r)\x15O6?#\x10dD\x10\x03nVE.X:\x0F>\x05~\vm]ih%)4<X$.\x12~mYf%H&;G\"\t\x16QG2s\u01B10\x04\x11p\n#GuBhM2[D3\n\x1E\f\\\r\0\x04BeSC\x13Za98\tD\x16t\x135\uA688Xln]i[-Z>\x10AeJ\u0435d\x1A\x12\x7F?\u04D9\x1Fk7B_VpBIDLLB\x10KxoTK\x1A\u07F7\x01?5\x7F\u0270K-6tSL4B\x1D\rr#9N*
+        (#TFw3aye.\x18!\"]mrV\x12.$\x06D\x1D\x14+\aaL\x06d,t\x15\n\x02\x12)2!f@rEwcVtSj)\u01A7%ck\x16\tGM$\t\x051<h'G
+        /ZL\x1C1:\x18\u0312(j\x15D\x11\x03\x03Ky\x15@fY<m\v)Yvl(\x1AzN7{\x05 \u0584%\t**2b\u0651\u05F92;t\x15v,T+\x14\rJ\x10.\0\u0A8D#E\b\u04B8
+        O#9^T\x12W\\f`\u0540$\x15*\u0395\x17\x11\x12\x15.\u028FlF\0J!3d\x02-So&ez%&*=FCH4?E;0\u06DFg\x02l\tnq'\tQ,\x16v\u0599@O\u06EEe\x0E\x192<\x15n\x06W\u02DF\u0779j\x0F{_m}Nyh8\x058\\\x12\u0149H\x1CD[@Q7[\uE997?$XP/Jb\x02\\5zvT\b_3(}\x0F\x1ER\u04A4J,sa\u0169\nj\u02A9>Et\t\x11EFY\u0398G\x11\u0413J\x1Cv\x19R1UID\x10\x02V\x13dYb%\v]O\u7D2F$<.x
+        4%\rjky\eCz{_\x7FVOR$\nf\x01>Qk(-\\Pc\x02r\x10\\\x05%\x1Dh\x13A\u0550\x17ne\x12m$B\r<}2AI\rK\u07B4WZM\x04\u0238A\vm\x0EA:V4?\x9E]\ngW\x04\x0E)?\x7F#\x13u\x04v\x04J\x12CB8r:N,S&P3\x7F?d=\x0F_\x17[\u056AWGh\x127fB&c=:
+        d9}\x1FIb`qT3$rBs\x14lD,\f\x12\0dX\x04,\a\u0339J5,dPvs\x1D\x01\x11`\u066AZB~\x13>\x0F$d\x1ETNL\x10@=
+        i k\u0639A\x18T\x14DmU^6$S\x06`\x1E\x7Fg)V@\x04\x04\0\x01\0\x1D<\x010`s\u0764xx
+        \e=\"Bd\x0E\x02\x044J{\x14~@3=CF+;\0\u05D2h\u063EP\uAE08tm~\x1F5\u0251\0)5H\r5u\u069Do\v\x04\"\n1|m\x04^*HI[Z|3\x19\aN<#LJXj\u0662cMN#yT!xh3\x04s(\x01+:>\x10\x1ECy:~\x03%\x06T{a.\x12\x1C\x16\rNW\x7F\nD0\x02g\x02ixHZ\x10X8R\x16\r\nW^1z
+        `j\x1A\n\x04\uECBFXh\x17,HiB\esmvZgr\x06L\f\x1A`\x18XS.\x19f\x7Fd\u03D2\uC6DA\x17wxR>sl
+        <\x17\"z\u0142\u052B\v6\x1A?\x02f!ES+\x19pee`\x037$Ab=\x0E\x18\u02D8zlt\fd\x02\x11\r\u06E3\x7F\u07EBu0b`\f\t/fUfP\x06\a@\v\x01\x0F\x0F$LEc(.!E\x7FJ8Od\x12#IyM`6&J<\x05+=\u0364|\x17\bV\x12\u04B2\x12\u0260i*X\x01!bKjmA\x7F\u064CP036;v\u0511>xJ`$\\~'U\u0297T`\r??#\x7F\x0E\0al\"6E\u0247Mi\r5k\x7F\u0657W_\aG01\x06\x1CE\x186?'t\b\x04\0\x03\0@ps<\x02\x01l,.!\uB299p0wm&Hu\x17\x11\x12\x05)$KH\x14R\x0EVe\x19\x06\x03UC\x053RSN\x0FGOE\x033\x05Y\x0Eucj#Q)_B\b\x10a\x02.\x1C\x01\u0156#'K4n\x17m$CLH,\x7F:+{}o(\x19Dxb\x06\0\0
+        2~-'!\x16Rz?\x03\"3\u061C\eb\vH{g3lxHg8wl[ \"\b,\x04Bd&\0\x03JNs\x14~@6:?\x05\f\f+;\x17@)t\x17Jn\u07A9\u0558F\x7F[oV9]Dqw\u05A7P\x18;N:*\v@\\\r\v4\x1CZt\x1FL\x05>_6\x18{{\u07BB3~7\x11\x18-\x18\x16?D\r\x0F<\v\x02\bX9*e6a\f3%@7S\x19t>(e\x02\x04\u0172\x0F%\"u\x13Q\x14M{&\x19ZJ\x19\0\x15Lu%I\u056D\x16'*\x1DK\x17t\xA9T5G,Hr\x02\x194
+        2\x04espt\u060CD\x03@ztVFqO\x14\x16,T8OP,J:#\x0EX\x0E\tDJ\"/B\u01F7UU2r3zWp{
+        w7N{\\N\\Y\n>\x11t\"tP\x13j\x18\x05w7\acP8\r-@/\x15<\x06\u0781o}_=JcO\u07A1\x19e\x1A0D>\0\x02I\x1D@S:?=\f]\x0FR|\x15~R\x11\05YC!\x18h[epm\x16\nmh\az\x02\06I4*\x02\u031C_\u0296\x14tSj/f,\x1A\"b\"me3We:}\f\x05bMB\x16R]\x1FD\x7F\x1C\x0F\x1FP\bJ\nj^s\x1Dd\x1C/2`\u056FH\x18bg\u07DA\x17i\x18j\x15V\u04BF\u0420\x1D1rd*c9(.q\x7F\x06?gr7&Y,\t#2$\x0F\x15j53.4\u07C5T\f!\x7F\u01A0L\x11J:4\n?~[iweFW3~\x17B@\x0FS(\0\x14\x15R+\x8BF\x1Ap<
+        Y3\x0F\x16\uE62E\x04\x03:3FJ\u068Ddb\x0EQw\u0537^|\v\x05\u0607VwS\x18\xA2DM\x02~Iy:DUi9=\t[UOX<\x16Kw\x1A\x16AI'Y~J\x104\x13\x135=V\u0193n
+        e\x1F|r\u079D\x11_p\x1AEcW-7<)\x19Dj6z\x06\x06d-\v\U000750F9QOl^DwOwI;\x9BPGv:g(`\x1A\r_o\x1D\x0ET/o\u0202`d}E\x7F\x1F\fcxs\a\x05@\x13\x06\x183sw2\b;>\a(Og\u0534NHL]mG\n\f\x1A=wuu7\u07A7X
+        \0\e2Stc\x1EQ$8lH\x1CcU,z\x17\e\x139\f\u0531\x04\x02qr*\x7Fre6-z\a{\0\x11=\fV_t\tQ=\nj6\x0FM,O01UnT8\"\eL\x10\n\n\x01(\\\u061Bk*bmEe7nO{dg\x03W{\x11=@3):\x14\a+9Eu@$\v7c\"#%T!(v7Q\u07EFL\u02562\x14\x05qg\09\v{0\u0595\x0FR\x7Ftyu.\x05\x06\x03Q\x1D&uU.\x0F
+        \fGOVxp\x06\x06P\x05\x01\"\bd@^+_5n\x7F[ee\x7FFt\u0608)?T\x1A\a?_~\x04\x01\x10\n{\x14\x03(l\r/PG\u076FCu\x1AkmF\ei^\awN__\x1C\bXr\x05Re-dZ,Dt\x01(\u03B6S8I/W3:,cB\\\x14\f\r_\u062CF\x1FBw6p\x0EDN+\x02im\x11I6\U00071E80nq\x10=T-;yg\x1E\x10\x7Fw\x10\x7F\x7F\u07A4(@\x10P(NG\u04BA\v{$TkLC\x12\u0514\x01\x1C-7\x1CQqMs]M\vd-6sV=u(d|\x02\x03fk\x03\x106$'6\x0F])1\0\x12\x04
+        +\x14;7d\x1AAh\x19\u053AO\x15?\uA3A3mslonlk#pu\x05C \x01\0\0Fm\x03K]A245|X\x7FZ\x7FqgEKZ\a\b\0\x10\v\x03\f\u0194ZlPN\fjh\u0779\u05A286f\x1E}4\x1Fj)%#\r;c\u013D2k|u<\u0392kU$n|\b4'~DK\u022Bk-\x14p~uThZ^\u0424r(+\x03eXQ`\x1E\u03BBw0\0l\f\0p\xF4d\twEUtR35\u07FF\uF56BT/Z
+        HXW\x10m#\x0EBCH:T/qy\x14%\x19?_J\r\x1E\x0Eu\x1F(T\x1Aj3-W\x02\x1A2\u0557gZ\e2/vZPycd!F\x03IJ/]_9p\x12YHd\x02\x041J2~@5\x06y4&\x0F)/\0$pWV\e\\WLe\x0Ex\u070Fb|k\x15{{%?\v,\x06\x04p\x12\x04\x12M!\u0325(\u012F+\x14_\u0588[\x12!+_fOj&\x04\f\0\0\x03\x03\bs1g]K\x19jG3\r9ph\u0337)U\"8Lu=(xz\u0134\x1A\x14W3tI\u0693I\"9\x03\x1A\ehMMHWo'\u03A2a9\x14m\e^jr\x7F!\x17?\u0141\f\x11<E!tp\"UutAVj>P#\x1A)ol\x06o$\x7F\x03-\x02ua'qf\f4;#yrr@\x142(\x138!\x0F\u05FD_DN+C#W4\x13}\b23\x16H\x18\x04\x150Q]ulUO\x7F%
+        \xC93\x02\"`{R\x1C\x13d\x03JJ4~@498\rT\x0Fi+\n@\x12'Y@H@\0A \x06ZW#&w\x11\x06\"\x03Ap\u047F\x7F\x01D\0\0\x03\x04#b\x1AykY\x15\x1E8/9;gr\u06B2]\u0692\x01\x11ydX\u0484,\x06C\em$K\x03(\x18?T\x028\x17Y67(&bYQ~n)\u07197D^g\x10\x11P\x12u\x16\x1D\x15iC5+@\x0ECY3nVYO\x06$\t\x7F\x11z]_\x0F`hT`\x04\x03!F+J\u06F3z$G\x12Y$\u03BC]4)Z?\x16P[w2\x15\x17(\n3'6_dMlu]\x1E\x19\0\x01Rh8z(
+        bn|\tnoj_lvT\U000F7B77hW3\x120\x01\a{\0\x02\0\x02BV8qd\0\x03JI#\x106Y(L\x0F=+/Q\x12\u042E(sE\x06^+\aNQ&6,%J~\x04\0\0\x14\bDw+\x1D\x04Ig\u01B8nQHgD\u067D0n\u063BNR\u05E1_A`R\x1DeRz_d,\x12\x04\x10Ruik\"hyk/-2\x16?Zat\x18\ai\r\x7F\0q\0\x18\x19\0m\x19hHE\x03P\x02\x19;{wB\u056F1a,/??\x01\a6\u060DY]w\x1Cgfx.Y\x1ELc~*w\n<0\x1967\n(-\u07AB[\u03FB?\x16\x06)C.\x13&/'B\x10\x15{\byZ\x03ba\x16I\e*uCg\x01\x13]\epQ\t\x16|O;\vqG~7\0\x13\uCFFC\u04FEW7d\x03JS4}4\x04=%p\x0F+)!$4\a+\x05\"\"R\f\b\0\n\bkYVv\t\"Bd\u05900)[p,Zg)Y~\x7F\x0Es\fX\u0722\x15\ng\x18g=2\\R\x03$\x06,
+        -zLWz37[:[b4:bO^\x19^\xB7[\x10\x0FzA]\n\r\rF\x05\u0779\x15@z\x06\x12r_Sp[^E8'\x11vQ\x0F\b\b\f\e4\u0455\xF3)ft\x10\x04\\}elQb&f/e\b\0]^,]j\u015A\x7Fi\a\a8m\x19K%\x05B\x02\0\u0411bV\b\x16W\u06E8t\x12$]g\x1D\u0599\x1232{\x13l\x12)
+        \x02`&\x18\fx\x131W\x1F\x1C\u0696C\0\x16\u01C93\u05055\nD\x05\b\0\x05rw\x1F&*Ad\x03J\x14~@3\u0139\x01\n\x0F)%-\"@$\x11(0\0fI\"9\x19aA\x19be\\{b[\x1F\x13%zl^x\x13<L$O\x19\b\b%@(4RZ_\x16\x19dnW\x7Fz[Nyf\x1FRoE\u0358n\x06S2=1E\0#z\t\f+qAV}\x10\\\u04D6H\x80`\x1F:ko\u056A4!\f(u0`\0@T\x1AK\x1Damm\u03B4`\x01\u0603\x11
+        \x05xeR\a.&Qi\x1FA\u0273\u03DE4M[9AwQ6)\x10u@fEb$v]\x15q*\x13\\~U\"HI&w\tk\x7F]\x10*\x05\x04`\x013]!PC\f>F(\x12\x16s\t\x04W\u07AF<x\rU\x0F;M0\x05\x05\f\0\b\x02\x02Z\x1CYo\x12T@.\x119N\rp\x1A#\t'3S\x14\x18\x18\x05Ld\0\x03KJc#\x107iI]\rb\x0F')\0\x12
+        i}h(>#X(0QWYXF\u030D)%[Y\x05\x0FL\aF\x02\u0408\x19I>\"*\u04ADL5g\xB4BDe7>\xF1p\a\x7FP%:A,#%8j\x05u\eGH\x03?Y^!S
+        &\x100\0\x16\x12j1MuR=N<U=$``\x06{b$<\uCCBD%o\x1C\fDQ\x1D^~:\u062F\x05d{\f\\C4.%m{\u028DBA%5\x17\x17C'a0\u0201`[\x1042#\x11h>\x17G17Ev\x7F<I\x02\x7FV\x7F\x0E,e\x05\x04\f\0\x03\x14\v@kaxd_W\x12\u07B39g.\u0359G[\u019Fl\07t\v\x15\x0F\x1DkVog[[d\u0540\x047KIk4f3y\"\x02u'#%%W@p\\\x1FcgV1Y\x152WPEQLD\x13gE(q0q*mz8\r;-\x7F!\x19rAK\u0769\nN\0.\e\x01$L7m=\x1EY\x7F`2:B#\e\x014\x04\0\x06\rZ\vo2eP{Da->\x11\u0140\x10d-\u043BBCoK&eHZO\b$Z\x1A\x05`@(eM$d9\x02<\x04\x11\x14'\v\u02F3\x17\u077E\b6H2YHHMfj\x04\xC4#BDwH\n4\x05)E\0\x01P\x06DAv\x06CF\u045C\x19\x05V\x13,[t8.?\x1C\0\"w@\x0F}+,(#;#\u0271*=.bF
+        %0\x04\x1D\x04\0\aM\x04d8j\x1Ej7Eb%$\x7F\u029Bp<\nd\x02\x03Jc%g7\x04m\x05:\x0F+\x1F\x0E@\x12et\x15!>L\n\fAK\x11?\u0508ecf\x1A\u017C\uF925$4_pku\u02E4\bn1\x0F\t\x04qiiZrNE\u0382\x14t\x12MH\00`$\x01\rK=p\x13V\x1Dx\x17Ts\x116[\x13J>W]J_L$Z\x14\x17\x15B\0
+        f\x03v&\x1Aec\a]n^\u0255\x01)\x171\u072Cs\e\x15\"\x10\u0369DW\x1Ew\x19u>1\x02\fzv\u03A67u+,v
+        \b\n@\nt\x06\u05F3B\0H<8\x11Pg{\u0411Fp\u01E1V@ \x01p\x12z\x14\x01d\x06\x0E\x14\n5U\u0175>|\x1EL`\eZh\t\x04\u0451_91wg\x1F\x13\x16B\0\0\x18\x13L\u0301\u0640U0
+        [\nE.[&6iX\u02F3eAd\u01AEs5-.eg]_d\x02\x05\x05LE+i\u01E07e8\rp\x10=+\e-\r\u0152$\x15k1\b[ynatz~5k\u07DD6\x12>s\a\"j(sV\x06\0I\x19\x10'\x14\u03209\x12t$C\x02\x17\x056\x18\x10QQz\x1Cznr\x7F~Uu_5<0\n\"z\x7F\x16\x10!uc\xCCom\u2017<q\x0F)l9p\u0354\x7F1\vr1VpQ{\x04,Yerd\x1AWY\\GT2\x01e:[\x7FQ\x1C?1X\"\x7FW9t:3\e0('Y\x7FB>\\zm@
+        Au\x0F\x1A?GI\x0E$V\u01FFQ}\b\t\x04_DYoU\x06A\x04\0\x18Y6-5E\x1ANa*xzA\x14B%1.K\u011B\x0ELH\x16-j\x1C*\x13\n])?\x1Cj?r~XVV*\x04\x19|d\x02\x04<JFf\u01E019\t\x04j\x1AP)\x1D-\x15$$!\u0650}*ZnV`\u07ED\u02DE,c\u06F7f
+        f</KJ$\x19]\u0790b\x13@B\0\x04\x14'\x18! >diqWO~+g\e\x1E&\x14C8g\0q.\x13\x06@BWf\x14N3)5PY\0.R[\f\x16H%S_Up&.3q\x1Aw~\\=w\x1DWcha\x1FX|3\x1E\aV]\x0FS!\x1A\t\x18EQ\x14\u01BD\x15Udb>?U\x01\x13:/
+        #\x03}\x1E\x18ckaf\x17ddo\x13\x15&pP%![\x19Q_\x7FQI\0\0\x92\x1C\n\\\x12\x04V\0[\x03u,\e!J\x1E?\x1AK\x1FOE\x1C
+        @\x16\np\x18\xDD\\V\u0336\x190k{\x17kod\x04tKFfg:iX\r~\x0F)\x1D-\x15\u0392f\\>p\x17B440\"*\t\bSNF6~q\\yz\u0304ie]kv\u0151\\:2p<c]\x17@\0\fh@aHV\x10hXbh\x123%im~\x18H\x1A\x10\x1C\x06\n}\x03@j2Hna}Y\x04Tx>\u04B9EDG\x0F.d\x17\x9BRU\x02EE\u0265\u02ABnl%,\x13\u9BB4\x12\nL\b\x020`\x1C6b\\D:\t7>\u04AEFL\u06E0>\0J\b\x7F^\b\0\v&g(HZ\x05\u01B9a~\x1D\x13\u0518\x10O,\\{?\x7F_(*\x025\0\b[eK\x16\x02\aukEe1YT\x01|e/\x1F)+c-\u02ECcH0rW\v\u072Dos\x7FDd%\x15KE3I\u01E08H\tp\x0F+\e\f\x18$\x01!l\u5461{8Yms?\x16\f\bUbw~3s@\t65?!?w\x02j|gZ\x1C@e^\x10\x11\x0E\x03\x1FWO*\b\x01(\t\x06\x01~,5UIh\f|M!X\x104\"%\x06\u0631\x11\u0386?y#\0qj4]\u03AD&62%/w<
+        \x1AkP\x13|\x1Dv\u05A5,=b<{0wJ\x15\x0F\u0374Jv{;))s!N\x11\x15w:Ye@\f\0>i&b.(q\u05D8\x153c\x15\e\x0FT\x152uR7j{n\x0El\x12#F\x12s*\x7F\x7F03\x06$\0Um6G.Vj\a\riQ\u063E\x19PczK7\x16s]aKwT0pegGl^FT\x1CC:\"x4>snd\x03JF\x03O4)H\x19b\x11+\x10\x19~@%\"fT5<;\x1A|VC\x02\u0464\u079AWH\v\x11$\x1Afgg\u066A\x0F}\x1Dps\u079Fo7hgo=\x7F\x16\x16\u0684ELY,+E\e,e\u04EF]T(+-gV\v#M-\f)xdg?\x18\x12R3q:[%r\x06\x0ECi\x1E\x10_N\x03U)\x1Fo|\a\\v
+        QEz\x19\x17a \n\x02\0\u0257(\b\x14`\x1D\v{AeDG\x14,\\\x18fz\u05B6TKo*\0@\tX\"\x1E\x14y]5`3L\x02\x108\x18D\x17\x11/%y\u04CB)\x1A%]P<>\u02E0rg\tk3O~;\x10>\n&{Tf\x11`\x1CHX5;FXb*6f\x1D\u0216I\u068AP\x05T\x19=NLMtc\x0F\tH{d\0\x03e/K\x03~\x10,d\x18n\x0F1%\x17,$xXKS\x15jZYFsp\x1A\0@#\x1A\fR0\x04\x11\u024E\x14!,
+        \uACA0\r\x18FSGq`KCQ\t\x03\x03):\x0E\x1D\u049B^s{\u050Fhn+\x06\x1E\x03deA\x1A'\x0Fxza-S\x1C3X\x18\x12d!YEJv8JZ\u015A\x15$7o\v\x1A*\aF:Cs|M$\x13IpCiR\x06$*\u0488\x15du\n8l\xA8SS|-EZ~\f\"
+        h'<\u042Du\rcX\05J \u0428\u04B9\x12\"G:1\x0E$_E\u0266hb-kj\u0226\x01\0\x02\x04\x1A\u020CFv\x19u\x03*P\x1A\xD4\0Kf\\1+e1\x1Evw\x16L9-^T54LxBt#\x19
+        K\x1D\x1Dn[\x04r*\x10\v$(P460\u0149Vl'GX \u0590d~IBi\x1E0:a\u0202\x19\0\x0F\x0E\x06d+i\u04D9\uBA99(k5Z\u0280\u0264A0@\e(wm\v#\u0122y`#\u03A9jv8\x02&D\x1Ds\x18\r6\x15>Ythmo\u05D6J\x10(v_(\x1AeMK)\x03cb\u06CE\x12\x04\a6OI)\t:4\u0196K|\u0458P\x16{\tH{\x12,\x7Fmg>wj\"rI\x18fE\u06F8\u0415u\x1Es}do\0\e)J\e\vZ\bqxNp-wU\u05EB|E&]\x1F;]/\x19\0\u01A8\u0798J~\x17DCI4YC\u05A7v\x11E\x13\a3\x19\x10QR\u0293r\x18\vDT9Q]W[_\x18tU{ivjdx}~Iy*\x10q_{]e2d\nhE3i\x1E2=DhP1r\x0F\x0E-@\x05\u2714<75smL\x03\t\x10v!e\u024F\x12CJp5m\x18-69\x02My\rSu*\u0755\x7Fw\x1A.DB_5mk4
+        U\x0F3\u0442\x02\x0EI\f8a\x19\x13\x14Z,\rY\u061CY\x02\u018B='kB\u0503IQ@A\x18I\x11h?
+        vbN\f;UA\fT\x01VU\r\xD4\x1C43\f)[#/'7\u6EFF\u0595}\uFB763vU\0\x18%*\t\u06CA\x12\x0E9(\x03<GT#N;\u043CO}c\u638D@\x0E\x7F_C\uEDAD\n$\0$\fk!\rr?R
+        }mYNp\e,j\x14'%_a-j\x0F\f\e\x15\\_Y|\u077BH,C\x14+\u0749\x0EgviV\bUQUfY\x7Fd&C^d*=\v\eK\"9\"%p\x11\x1D\x11\b\r$x\x05\u01D9\x97zN8i@\x05<>\x1AV\bbl\a\u02B9.$J)\x01aka/A\x16B?76Dtdlq\u0294@i\x1D4\r+8.0ka(\x03QK9$jW0YV[]VK\n\x03svo\x0E\x15V\x03B'\u03FB]\x1A\u0692\x17\x0F\x1D\x0FunIJ\u0167\u0375nT[\u0687\x13yY\x7Fq?j\req(Q2Aa\u0436un\0PN\x1FM\byZGMX\fB\x11E\x03J\x19u}L\x7FZRzQ{?\x01\x04J,;#s\u05BE\u7A17se??\x06JW.G\x1E
+        2Ko95,7&he&\x06\\vDU\x0F\x0F\u066F=\by\u06B4v{(\u03AAe)q\x18o\x0E.\x19v)`J\uC04C\0d\x04YD3,\x14p9\"%#8\x10\x05\b\r$H\x0F\u0700\x18v1C\x02H\x02\0\x10\"f\x10Tv=;H\x010yjI\x10\x1CHa\nEkNn\u01B6T8Q)
+        :[qS=\x1A+Fyd,?q\x17P2;(]\x11\x1Di0z\rJjj\xC71ZGWn2C3$\u0656D,\x03Xt\x1E\u01DE1\x02Cy%2cm\b{\x16\u0786}7&Q\e=|Y\u0544^F\nIEn8l\u019E\x01\x04&FEL.\x15tBaLwpv\x1AE0@r\x16\n]\x0Fz\x1F0FB\u05B2\x01_h\u0476\x06QvCPE:\x1Cn\x0Eu[\nHS\x18Y\x14SBt\n\x06\".>\u0105\t}eT>aprhZ$]x$5\u0734jKK\x1APG\xC8WU}(]k\u0736\x19ktF#\x03-8x8\x036d\x04\b?C+/40?\x058
+        \"\x10a\x0F\b\f$\u0600\x06\x18@K\x01(\e\x14\\@[\x18,AoT\x04\x04\x0F\aXcP)8a\x10h\x04t-B5\u058DR{W\x7F\u05790\x01S:QeX~!\x11\x1Ey]\u0257nU\x13s\x10h/zL\u07A6\v\x1CM\u0669TMEF\r9QZD\x05U\x14l*e&Fa.AK\x1F\r\x18-\v\x14SP.\x19D6T\u04F6\x7F\x1C2c\x142c\x01\"iKos\x03k\x10sAZ
+        T\x0F\x01\x11n(4\fh4%YFDCOS\x1Fz\x15=t={\x1Eai}V(\x02s\u0489r[mh,=\x04\bh\x02\x10Qbd$2\x0E[\e?rV!P\a*T\x04.\x12f\x0F;J\x1F\u0412\nA1\u03EDd]\x02j&Y@m3\x02JB:&m\x7FZ\x16qrYy\x12}o\x0EdL\x160CbxP0(\x11I\n,$x\x0Ea\bz\uA713_cI{k\07\u033COI*9J&&\x16\x113L*\r\x16\t\x01aDM\x19jt>\x7FCkJe]\x12\u0626#S\x19
+        \x062\x18lFB\x01u#q4z!-|]4a41mlXZJhK70\x17m9l'PDo\x1Cbf7\fEo\x14>Kj\x19j\x19_5'M#y\x19_pUb\x1C\a4H\x04\n`\rg:;\u060A\x19\n*\x0EeRX:[16\b\x06t95\"B\b)\x0E\x0Fad*\0\x15jAQL4%\0\x03\x150`\x0Eglno9\\`\\\v&TD6T\x0E\u03D58\u04DBY|^\x18q`\x11\x01\x16\fnNa\u02EFSo%cb),=,D@\x1F\x05d\x15AB\t4r<X<C$\x10\x05\nq\x17a\x04\f\x02X\b\x15\"n8
+        \0\f\x01\x05j@T\u0386VDH.\u036AQ+\x0F \a\n@]1C\"\x1A\x1C\x18P^rz\u077AZ\b1XhrE\x1D\x01Gw\x0E$\x0Et\x14\x04QSR|K\x10\u0792y\x10}wESuREW\x12+m}\x0EXAZ\x1EdZv\x0E\x185W\x17UL(H\x11\n%`0,Zu!\x15N]]M\x11\x19\x135K\tw\vyD\x02DM\x030\x06$mxUB^4\b\x17=X\vScV_WB\"L`\x1F\x1C\0\x04G\n\x1E/p\x1E)\x05\x17\x12&\b\x16d@:vE(\x13(c\x15YG^\x16vPfDU14_us^\uA50B\0
+        \x15&NP\x1Cvl+Of\x7Fd9C4AB1#&\x10\b,0Q\x03$\0\x7F\uEBEF\x14\0\x03.-\x1EnV-JGeBsiFQKz7IRJ0,[l\x1E;|MN\u0686j\u06A4\x7F\x1E/*<\x06E^\x1E#8\x18\"^toSC[n\x16\v=\u0350x\x16(|x\x10]\u01E9\x05DQH
+        @\0\0\0b,\x02B\x0Ec&gn\"O\x16*R1J\x1C&+qJ\x18\r%\b!$\x16xP)K\x025\x18?p\by\r&Jpe\t\x01A\f)\x12>\x12ps\x04\u0345\x14N\"w\x0E@\a*ddt\u021E@\u0438hl\x16X\u01B0\x05}I\x1Cdlb\x1A&/dX\x0F\\qah)%Q|_7i\u0220:?\x0E2\\\u0434h$7WLQ4U\"gR'\x14h}\x15K\x7Fq?\t\x10\0\0\0\02\x1AX\bi\x17lEL
+        X\x0E\n\fQ\x01\x01\x11AX3Y\x18P\x01qD\0\x03.A= \x02i\u5E09\0\e\x179\0\x03=W7\0S0\"\na:4\u03C3\x10\u0683L\x0EwLor)\a\x02\x06!\x12~4Ks\u02E3s7[q\\yk{?2%W$\u052A\a\u05BF[Z)A?Jufh#[TWzz_\u0697\x7FxeK\x16W\x7F)Ue0l\u7737[\r\x02j\x01\x06$p\x16\x1CHy5\n\x02\x1933P&\x14\x05J36uK\u0181U\x12\x01\n0-UT\n
+        h\x1AX*<\x15\r\x16\x0E\x16\x06\nS~\r,\x15J\x06\x15:T\x15\x15\x02\x15\nIi\x12&4\r\x15\rD)\x15\x1EYf\r\aAQ\u01C4A+\x05N;+LAME3.100UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUdn-\x18`\0/a\0\0\0\x01\0\0\0
+        \0\04\0\0\x04UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '17180'
+      Strict-Transport-Security:
+      - max-age=1800;
+      Via:
+      - 1.1 google
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - POST, PATCH, OPTIONS, DELETE, GET, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - character-cost
+      access-control-max-age:
+      - '600'
+      character-cost:
+      - '20'
+      content-type:
+      - audio/mpeg
+      date:
+      - Wed, 06 May 2026 06:44:50 GMT
+      server:
+      - uvicorn
+      vary:
+      - Accept-Language
+      x-region:
+      - us-central1
+      x-trace-id:
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    status:
+      code: 200
+      message: OK
+version: 1

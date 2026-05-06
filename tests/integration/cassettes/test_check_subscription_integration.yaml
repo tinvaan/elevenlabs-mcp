@@ -1,0 +1,58 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Host:
+      - api.elevenlabs.io
+      User-Agent:
+      - elevenlabs/2.45.0
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - elevenlabs
+      X-Fern-SDK-Version:
+      - 2.45.0
+    method: GET
+    uri: https://api.elevenlabs.io/v1/user/subscription
+  response:
+    body:
+      string: '{"tier":"starter","character_count":2744,"character_limit":90000,"max_character_limit_extension":0,"max_credit_limit_extension":0,"can_extend_character_limit":false,"allowed_to_extend_character_limit":false,"next_character_count_reset_unix":1778937520,"voice_slots_used":0,"professional_voice_slots_used":0,"voice_limit":10,"max_voice_add_edits":65,"voice_add_edit_counter":0,"professional_voice_limit":0,"can_extend_voice_limit":false,"can_use_instant_voice_cloning":true,"can_use_professional_voice_cloning":false,"currency":"usd","current_overage":{"amount":"0","currency":"usd"},"status":"active","billing_period":"monthly_period","character_refresh_period":"monthly_period","next_invoice":{"amount_due_cents":545,"subtotal_cents":500,"tax_cents":null,"discount_percent_off":null,"discount_amount_off":null,"discounts":[],"next_payment_attempt_unix":1778941120,"payment_intent_status":null,"payment_intent_statusses":[]},"open_invoices":[],"has_open_invoices":false,"pending_change":null,"has_used_starter_coupon_on_account":true,"has_used_creator_coupon_on_account":true}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '1076'
+      Strict-Transport-Security:
+      - max-age=1800;
+      Via:
+      - 1.1 google
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - POST, PATCH, OPTIONS, DELETE, GET, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '600'
+      content-type:
+      - application/json
+      date:
+      - Tue, 05 May 2026 11:02:28 GMT
+      server:
+      - uvicorn
+      vary:
+      - Accept-Language
+      x-region:
+      - us-central1
+      x-trace-id:
+      - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    status:
+      code: 200
+      message: OK
+version: 1
