@@ -52,6 +52,7 @@ def vcr_mocks_fixture() -> vcr.VCR:
     api_key = os.environ.get("ELEVENLABS_API_KEY", "")
     return vcr.VCR(**{
         "record_mode": "once",
+        "match_on": ["method", "scheme", "host", "port", "path", "query", "body"],
         "filter_headers": ["authorization", "xi-api-key", "x-api-key"],
         "before_record_request": lambda request: Scrub(api_key).request(request),
         "before_record_response": lambda response: Scrub(api_key).response(response),
